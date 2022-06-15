@@ -1,0 +1,5 @@
+pacman:
+  service:
+    type: ClusterIP
+
+  ingress: {}

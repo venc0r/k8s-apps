@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pacman
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://g1tl4b.dynamic-dns.net/venc0r/k8s-apps.git
+    path: pacman
+    targetRevision: main
+    plugin:
+      name: kustomized-helm
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: pacman
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
