@@ -10,7 +10,7 @@ spec:
     path: openstack-cinder-csi
     targetRevision: main
     helm:
-      valuesFiles:
+      valueFiles:
         - values.yaml
     # plugin:
     #   name: kustomized-helm
