@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: openstack-cinder-csi
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://g1tl4b.dynamic-dns.net/venc0r/k8s-apps.git
+    path: openstack-cinder-csi
+    targetRevision: main
+    helm:
+      ValuesFiles:
+        - values.yaml
+    # plugin:
+    #   name: kustomized-helm
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: openstack-cinder-csi
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
