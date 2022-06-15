@@ -9,6 +9,7 @@ openstack-cinder-csi:
     create: true
     name: cinder-csi-cloud-config
     data:
+    # TODO wenns credentials gelöst sind muss das cloud.conf werden
       cloud-config: |-
         [Global]
         auth-url="https://de-nbg6-1.noris.cloud:5000/v3"

@@ -19,6 +19,6 @@ spec:
     namespace: openstack-cinder-csi
   syncPolicy:
     automated:
-      selfHeal: true
+      selfHeal: false
     syncOptions:
       - CreateNamespace=true
