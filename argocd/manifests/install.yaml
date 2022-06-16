@@ -10232,9 +10232,9 @@ spec:
           name: var-files
       - command: [sh, -c]
         args:
-        - wget -O argocd-vault-plugin https://github.com/argoproj-labs/argocd-vault-plugin/releases/download/v1.6.0/argocd-vault-plugin_1.6.0_linux_amd64 \
-          && chmod +x argocd-vault-plugin \
-          && mv argocd-vault-plugin /custom-tools/
+          - wget https://github.com/argoproj-labs/argocd-vault-plugin/releases/download/v1.6.0/argocd-vault-plugin_1.6.0_linux_amd64 \
+            && mv argocd-vault-plugin_1.6.0_linux_amd64 /custom-tools/argocd-vault-plugin \
+            && chmod +x /custom-tools/argocd-vault-plugin
         image: alpine:3.8
         name: download-tools
         volumeMounts:
