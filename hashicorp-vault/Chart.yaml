@@ -25,4 +25,4 @@ appVersion: "1.10.3"
 dependencies:
 - name: hashicorp-vault
   version: 0.20.1
-  repository: https://github.com/hashicorp/vault-helm
+  repository: https://helm.releases.hashicorp.com
