@@ -10,9 +10,6 @@ spec:
     hostNetwork: true
     dashboard:
       enabled: true
-    # ports:
-    #   web:
-    #     redirectTo: websecure
     logs:
       level: INFO
       access:
