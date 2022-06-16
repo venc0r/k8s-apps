@@ -4,7 +4,7 @@ metadata:
   name: hashicorp-vault
   namespace: argocd
 spec:
-  project: default
+  project: infrastructure
   source:
     repoURL: https://g1tl4b.dynamic-dns.net/venc0r/k8s-apps.git
     path: hashicorp-vault

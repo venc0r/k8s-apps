@@ -10216,6 +10216,9 @@ spec:
           name: helm-working-dir
         - mountPath: /home/argocd/cmp-server/plugins
           name: plugins
+        - name: custom-tools
+          mountPath: /usr/local/bin/argocd-vault-plugin
+          subPath: argocd-vault-plugin
       initContainers:
       - command:
         - cp
@@ -10227,6 +10230,16 @@ spec:
         volumeMounts:
         - mountPath: /var/run/argocd
           name: var-files
+      - command: [sh, -c]
+        args:
+        - wget -O argocd-vault-plugin https://github.com/argoproj-labs/argocd-vault-plugin/releases/download/v1.6.0/argocd-vault-plugin_1.6.0_linux_amd64 \
+          && chmod +x argocd-vault-plugin \
+          && mv argocd-vault-plugin /custom-tools/
+        image: alpine:3.8
+        name: download-tools
+        volumeMounts:
+        - mountPath: /custom-tools
+          name: custom-tools
       volumes:
       - configMap:
           name: argocd-ssh-known-hosts-cm
@@ -10258,6 +10271,8 @@ spec:
         name: var-files
       - emptyDir: {}
         name: plugins
+      - emptyDir: {}
+        name: custom-tools
 ---
 apiVersion: apps/v1
 kind: Deployment
