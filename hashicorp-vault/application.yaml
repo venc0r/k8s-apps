@@ -21,4 +21,10 @@ spec:
     automated:
       selfHeal: true
     syncOptions:
+      - RespectIgnoreDifferences=true
       - CreateNamespace=true
+  ignoreDifferences:
+    - group: "admissionregistration.k8s.io"
+      kind: "MutatingWebhooknconfiguration"
+      jsonPointers:
+      - /webhooks/0/clientConfig/caBundle
