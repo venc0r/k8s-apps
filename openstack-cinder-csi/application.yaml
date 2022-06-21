@@ -4,9 +4,9 @@ metadata:
   name: openstack-cinder-csi
   namespace: argocd
 spec:
-  project: default
+  project: infrastructure
   source:
-    repoURL: https://g1tl4b.dynamic-dns.net/venc0r/k8s-apps.git
+    repoURL: ssh://git@g1tl4b.dynamic-dns.net:2222/venc0r/k8s-apps
     path: openstack-cinder-csi
     targetRevision: main
     helm:

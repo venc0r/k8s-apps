@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  project: infrastructure
+  source:
+    path: argocd/manifests
+    repoURL: ssh://git@g1tl4b.dynamic-dns.net:2222/venc0r/k8s-apps
+    targetRevision: main
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - ApplyOutOfSyncOnly=true
+    - CreateNamespace=true

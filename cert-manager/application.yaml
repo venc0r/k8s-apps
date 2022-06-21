@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager
+  namespace: argocd
+spec:
+  destination:
+    namespace: cert-manager
+    server: https://kubernetes.default.svc
+  project: infrastructure
+  source:
+    directory:
+      jsonnet:
+        tlas:
+        - name: ""
+          value: ""
+    path: cert-manager/manifests
+    repoURL: ssh://git@g1tl4b.dynamic-dns.net:2222/venc0r/k8s-apps
+    targetRevision: main
+  syncPolicy:
+    automated:
+      selfHeal: true
