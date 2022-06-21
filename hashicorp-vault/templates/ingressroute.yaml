@@ -11,7 +11,7 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: hashicorp-vault
+  name: hashicorp-vault-http
 spec:
   entryPoints:
     - web
@@ -28,7 +28,7 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: hashicorp-vault
+  name: hashicorp-vault-https
 spec:
   entryPoints:
     - websecure
