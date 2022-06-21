@@ -21,7 +21,7 @@ spec:
       priority: 10
       services:
         - name: hashicorp-vault
-          port: 8200
+          port: 8201
       middlewares:
       - name: http-to-https
 ---
@@ -38,6 +38,6 @@ spec:
       priority: 10
       services:
         - name: hashicorp-vault
-          port: 8200
+          port: 8201
   tls:
     secretName: hashicorp-vault-https-cert
