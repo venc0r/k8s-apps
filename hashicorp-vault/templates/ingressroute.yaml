@@ -22,6 +22,7 @@ spec:
       services:
         - name: hashicorp-vault
           port: 8200
+          scheme: http
       middlewares:
       - name: http-to-https
 ---
@@ -39,5 +40,6 @@ spec:
       services:
         - name: hashicorp-vault
           port: 8200
+          scheme: http
   tls:
     secretName: hashicorp-vault-https-cert
