@@ -1,0 +1,43 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: http-to-https
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: hashicorp-vault
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: 'Host(`hashicorp-vault.k3s.v3nc.org`)'
+      priority: 10
+      services:
+        - name: hashicorp-vault
+          port: 8200
+      middlewares:
+      - name: http-to-https
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: hashicorp-vault
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: 'Host(`hashicorp-vault.k3s.v3nc.org`)'
+      priority: 10
+      services:
+        - name: hashicorp-vault
+          port: 8200
+  tls:
+    secretName: hashicorp-vault-https-cert
