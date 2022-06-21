@@ -1,49 +1,50 @@
-global:
-  tlsDisable: false
-server:
-  # Ingress allows ingress services to be created to allow external access
-  # from Kubernetes to access Vault pods.
-  # If deployment is on OpenShift, the following block is ignored.
-  # In order to expose the service, use the route section below
-  ingress:
+vault:
+  global:
+    tlsDisable: false
+  server:
+    # Ingress allows ingress services to be created to allow external access
+    # from Kubernetes to access Vault pods.
+    # If deployment is on OpenShift, the following block is ignored.
+    # In order to expose the service, use the route section below
+    ingress:
+      enabled: true
+    # volumes is a list of volumes made available to all containers. These are rendered
+    # via toYaml rather than pre-processed like the extraVolumes value.
+    # The purpose is to make it easy to share volumes between containers.
+    volumes:
+      - name: plugins
+        emptyDir: {}
+
+    # volumeMounts is a list of volumeMounts for the main server container. These are rendered
+    # via toYaml rather than pre-processed like the extraVolumes value.
+    # The purpose is to make it easy to share volumes between containers.
+    volumeMounts:
+      - mountPath: /usr/local/libexec/vault
+        name: plugins
+        readOnly: true
+
+    # This configures the Vault Statefulset to create a PVC for data
+    # storage when using the file or raft backend storage engines.
+    # See https://www.vaultproject.io/docs/configuration/storage/index.html to know more
+    dataStorage:
+      enabled: true
+      # Size of the PVC created
+      size: 2Gi
+      # Location where the PVC will be mounted.
+      mountPath: "/vault/data"
+      # Name of the storage class to use.  If null it will use the
+      # configured default Storage Class.
+      storageClass: csi
+      # Access Mode of the storage device being used for the PVC
+      accessMode: ReadWriteOnce
+      # Annotations to apply to the PVC
+      annotations: {}
+
+  # Vault UI
+  ui:
+    # True if you want to create a Service entry for the Vault UI.
+    #
+    # serviceType can be used to control the type of service created. For
+    # example, setting this to "LoadBalancer" will create an external load
+    # balancer (for supported K8S installations) to access the UI.
     enabled: true
-  # volumes is a list of volumes made available to all containers. These are rendered
-  # via toYaml rather than pre-processed like the extraVolumes value.
-  # The purpose is to make it easy to share volumes between containers.
-  volumes:
-    - name: plugins
-      emptyDir: {}
-
-  # volumeMounts is a list of volumeMounts for the main server container. These are rendered
-  # via toYaml rather than pre-processed like the extraVolumes value.
-  # The purpose is to make it easy to share volumes between containers.
-  volumeMounts:
-    - mountPath: /usr/local/libexec/vault
-      name: plugins
-      readOnly: true
-
-  # This configures the Vault Statefulset to create a PVC for data
-  # storage when using the file or raft backend storage engines.
-  # See https://www.vaultproject.io/docs/configuration/storage/index.html to know more
-  dataStorage:
-    enabled: true
-    # Size of the PVC created
-    size: 2Gi
-    # Location where the PVC will be mounted.
-    mountPath: "/vault/data"
-    # Name of the storage class to use.  If null it will use the
-    # configured default Storage Class.
-    storageClass: csi
-    # Access Mode of the storage device being used for the PVC
-    accessMode: ReadWriteOnce
-    # Annotations to apply to the PVC
-    annotations: {}
-
-# Vault UI
-ui:
-  # True if you want to create a Service entry for the Vault UI.
-  #
-  # serviceType can be used to control the type of service created. For
-  # example, setting this to "LoadBalancer" will create an external load
-  # balancer (for supported K8S installations) to access the UI.
-  enabled: true
