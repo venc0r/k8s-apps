@@ -69,7 +69,7 @@ spec:
         namespace: demo
       services:
         - kind: Service
-          name: whoami
+          name: webapp
           namespace: demo
           port: 8080
 ---
@@ -85,7 +85,7 @@ spec:
       match: 'Host(`test.k3s.v3nc.org`)'
       services:
         - kind: Service
-          name: whoami
+          name: webapp
           namespace: demo
           port: 8080
   tls:
