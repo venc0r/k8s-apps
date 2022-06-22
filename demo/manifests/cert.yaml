@@ -2,12 +2,11 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: demo-https-cert
-  namespace: demo
 spec:
-  commonName: test.v3nc.org
+  commonName: test.k3s.v3nc.org
   secretName: demo-https-cert
   dnsNames:
-    - test.v3nc.org
+    - test.k3s.v3nc.org
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer

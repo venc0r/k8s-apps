@@ -1,47 +1,49 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: demo
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: whoami
-  namespace: demo
+  name: webapp
+  labels:
+    app: webapp
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: whoami
-  replicas: 1
+      app: webapp
   template:
     metadata:
       labels:
-        app: whoami
+        app: webapp
     spec:
+      serviceAccountName: vault
       containers:
-        - name: whoami
-          image: containous/whoami:v1.5.0
-          ports:
-            - containerPort: 80
+        - name: app
+          image: burtlo/exampleapp-ruby:k8s
+          imagePullPolicy: Always
+          env:
+            - name: VAULT_ADDR
+              value: 'http://vault:8200'
+            - name: JWT_PATH
+              value: '/var/run/secrets/kubernetes.io/serviceaccount/token'
+            - name: SERVICE_PORT
+              value: '8080'
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: whoami
-  namespace: demo
+  name: webapp
 spec:
   type: ClusterIP
   ports:
-    - port: 5678
-      targetPort: 80
+    - port: 8080
+      targetPort: 8080
   selector:
-    app: whoami
+    app: webapp
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   name: http-to-https
-  namespace: demo
 spec:
   redirectScheme:
     scheme: https
@@ -51,32 +53,35 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: whoami-http
-  namespace: demo
 spec:
   entryPoints:
   - web
   routes:
     - kind: Rule
-      match: 'Host(`test.v3nc.org`)'
+      match: 'Host(`test.k3s.v3nc.org`)'
       middlewares:
       - name: http-to-https
         namespace: demo
+      services:
+        - kind: Service
+          name: whoami
+          namespace: demo
+          port: 8080
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: whoami-https
-  namespace: demo
 spec:
   entryPoints:
   - websecure
   routes:
     - kind: Rule
-      match: 'Host(`test.v3nc.org`)'
+      match: 'Host(`test.k3s.v3nc.org`)'
       services:
         - kind: Service
           name: whoami
           namespace: demo
-          port: 5678
+          port: 8080
   tls:
     secretName: demo-https-cert
