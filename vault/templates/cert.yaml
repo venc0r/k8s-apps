@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: vault-https-cert
+spec:
+  commonName: vault.k3s.v3nc.org
+  secretName: vault-https-cert
+  dnsNames:
+    - vault.k3s.v3nc.org
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer

@@ -11,16 +11,16 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: hashicorp-vault-http
+  name: vault-http
 spec:
   entryPoints:
     - web
   routes:
     - kind: Rule
-      match: 'Host(`hashicorp-vault.k3s.v3nc.org`)'
+      match: 'Host(`vault.k3s.v3nc.org`)'
       priority: 10
       services:
-        - name: hashicorp-vault
+        - name: vault
           port: 8200
           scheme: http
       middlewares:
@@ -29,17 +29,17 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: hashicorp-vault-https
+  name: vault-https
 spec:
   entryPoints:
     - websecure
   routes:
     - kind: Rule
-      match: 'Host(`hashicorp-vault.k3s.v3nc.org`)'
+      match: 'Host(`vault.k3s.v3nc.org`)'
       priority: 10
       services:
-        - name: hashicorp-vault
+        - name: vault
           port: 8200
           scheme: http
   tls:
-    secretName: hashicorp-vault-https-cert
+    secretName: vault-https-cert

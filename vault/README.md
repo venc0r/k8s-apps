@@ -2,11 +2,11 @@
 
 # Init: just run the following command in the vault pod
 ```
-kubectl exec -it -n hashicorp-vault hashicorp-vault-0  -- vault operator init
+kubectl exec -it -n vault vault-0  -- vault operator init
 ```
 
 # Unseal: you have to pass +3+ unseal keys to the vault pod
 ```
-kubectl exec -it -n hashicorp-vault hashicorp-vault-0  -- vault operator unseal <unseal_key>
+kubectl exec -it -n vault vault-0  -- vault operator unseal <unseal_key>
 ```
 
