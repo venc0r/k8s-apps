@@ -10187,6 +10187,9 @@ spec:
           initialDelaySeconds: 30
           periodSeconds: 5
         name: argocd-repo-server
+        envFrom:
+        - secretRef:
+            name: argocd-vault-plugin-credentials
         ports:
         - containerPort: 8081
         - containerPort: 8084
