@@ -1,4 +1,6 @@
 vault:
+  global:
+    tlsDisable: true
   server:
     auditStorage:
       enabled: true
@@ -10,7 +12,7 @@ vault:
         ui = false
 
         listener "tcp" {
-          tls_disable = 1
+          tls_disable = 0
           address = "[::]:8200"
           cluster_address = "[::]:8201"
         }

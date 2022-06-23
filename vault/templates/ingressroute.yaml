@@ -22,7 +22,7 @@ spec:
       services:
         - name: vault
           port: 8200
-          scheme: http
+          scheme: https
       middlewares:
       - name: http-to-https
 ---
@@ -40,6 +40,6 @@ spec:
       services:
         - name: vault
           port: 8200
-          scheme: http
+          scheme: https
   tls:
     secretName: vault-https-cert
