@@ -21,3 +21,5 @@ gitea:
       certificatesSecret: "gitea-tls-secret"
       certKeyFilename: "pgsql.key"
       certFilename: "pgsql.crt"
+    volumePermissions:
+      enabled: true
