@@ -18,8 +18,8 @@ vault:
           tls_disable = "false"
           address = "[::]:8200"
           cluster_address = "[::]:8201"
-          tls_cert_file = "/vault/userconfig/vault-server-cert/tls.crt"
-          tls_key_file  = "/vault/userconfig/vault-server-cert/tls.key"
+          tls_cert_file = "/vault/userconfig/vault-https-cert/tls.crt"
+          tls_key_file  = "/vault/userconfig/vault-https-cert/tls.key"
         }
         storage "consul" {
           path = "vault"
