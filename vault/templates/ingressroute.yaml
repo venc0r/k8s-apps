@@ -7,6 +7,16 @@ spec:
   redirectScheme:
     scheme: https
     permanent: true
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: ServersTransport
+metadata:
+  name: vault-tls-backend
+  namespace: kube-system
+spec:
+  serverName: vault.k3s.v3nc.org
+
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
@@ -25,6 +35,7 @@ spec:
           scheme: https
       middlewares:
       - name: http-to-https
+
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
@@ -41,5 +52,6 @@ spec:
         - name: vault
           port: 8200
           scheme: https
+          serversTransport: vault-tls-backend
   tls:
     secretName: vault-https-cert
