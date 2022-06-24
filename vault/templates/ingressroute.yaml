@@ -13,7 +13,6 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: ServersTransport
 metadata:
   name: vault-tls-backend
-  namespace: kube-system
 spec:
   serverName: vault.k3s.v3nc.org
 
