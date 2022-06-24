@@ -1,0 +1,45 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: http-to-https
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: pacman-http
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: 'Host(`pacman.k3s.v3nc.org`)'
+      priority: 10
+      services:
+        - name: pacman
+          port: 80
+      middlewares:
+      - name: http-to-https
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: pacman-https
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: 'Host(`pacman.k3s.v3nc.org`)'
+      priority: 10
+      services:
+        - name: pacman
+          port: 80
+      middlewares:
+      - name: http-to-https
+  tls:
+    secretName: pacman-https-cert
