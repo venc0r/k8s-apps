@@ -1,6 +1,6 @@
 vault:
   global:
-    tlsDisable: true
+    tlsDisable: false
   server:
     auditStorage:
       enabled: true
