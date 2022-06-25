@@ -7,7 +7,7 @@ gitea:
       email: joerg.markert@gmail.com
     additionalConfigFromEnvs:
     - name: ENV_TO_INI__DATABASE__USERNAME
-      value: gitea
+      value: postgres
     - name: ENV_TO_INI__DATABASE__PASSWD
       valueFrom:
         secretKeyRef:
@@ -38,7 +38,7 @@ gitea:
     readOnly: true
     mountPath: /gitea-https-cert
   postgresql:
-    enabled: true
+    enabled: false
 postgresql:
   global:
     postgresql:

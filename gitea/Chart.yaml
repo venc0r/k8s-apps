@@ -26,6 +26,6 @@ dependencies:
 - name: gitea
   version: 5.0.9
   repository: https://dl.gitea.io/charts/
-# - name: postgresql
-#   version: 11.6.10
-#   repository: https://charts.bitnami.com/bitnami
+- name: postgresql
+  version: 11.6.10
+  repository: https://charts.bitnami.com/bitnami
