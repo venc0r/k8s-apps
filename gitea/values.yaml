@@ -10,7 +10,7 @@ gitea:
       valueFrom:
         secretKeyRef:
           name: gitea-pgsql-secret
-          key: postges-password
+          key: postgres-password
     config:
       APP_NAME: "Gitea: Kaffee und zwar schwarzer"
       RUN_MODE: prod
