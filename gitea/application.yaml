@@ -9,9 +9,8 @@ spec:
     repoURL: ssh://git@g1tl4b.dynamic-dns.net:2222/venc0r/k8s-apps
     path: gitea
     targetRevision: main
-    helm:
-      valueFiles:
-        - values.yaml
+    plugin:
+      name: argocd-vault-plugin-helm
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: gitea
