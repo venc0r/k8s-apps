@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: ssh://git@g1tl4b.dynamic-dns.net:2222/venc0r/k8s-apps
-    path: gitea/manifest
+    path: gitea/manifests
     targetRevision: main
     plugin:
       name: argocd-vault-plugin-helm
