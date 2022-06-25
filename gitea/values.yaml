@@ -9,7 +9,7 @@ gitea:
     - name: ENV_TO_INI__DATABASE__PASSWD
       valueFrom:
         secretKeyRef:
-          name: gitea-pgsql-secret
+          name: pgsql-secret
           key: postges-password
     config:
       APP_NAME: "Gitea: Kaffee und zwar schwarzer"
