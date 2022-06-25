@@ -10,7 +10,7 @@ gitea:
       value: postgres
     - name: ENV_TO_INI__DATABASE__DB_TYPE
       value: postgres
-    - name: ENV_TO_INI__DATABASE__DBNAME
+    - name: ENV_TO_INI__DATABASE__NAME
       value: gitea
     - name: ENV_TO_INI__DATABASE__PASSWD
       valueFrom:
