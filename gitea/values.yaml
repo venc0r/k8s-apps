@@ -10,6 +10,8 @@ gitea:
       value: postgres
     - name: ENV_TO_INI__DATABASE__DB_TYPE
       value: postgres
+    - name: ENV_TO_INI__DATABASE__DBNAME
+      value: gitea
     - name: ENV_TO_INI__DATABASE__PASSWD
       valueFrom:
         secretKeyRef:
