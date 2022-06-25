@@ -6,6 +6,8 @@ gitea:
       existingSecret: gitea-admin-secret
       email: joerg.markert@gmail.com
     additionalConfigFromEnvs:
+    - name: ENV_TO_INI__DATABASE__USERNAME
+      value: gitea
     - name: ENV_TO_INI__DATABASE__PASSWD
       valueFrom:
         secretKeyRef:
