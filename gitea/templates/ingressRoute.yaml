@@ -20,8 +20,8 @@ spec:
       match: 'Host(`gitea.k3s.v3nc.org`)'
       priority: 10
       services:
-        - name: gitea
-          port: 80
+        - name: gitea-http
+          port: 3000
       middlewares:
       - name: http-to-https
 ---
@@ -37,8 +37,8 @@ spec:
       match: 'Host(`gitea.k3s.v3nc.org`)'
       priority: 10
       services:
-        - name: gitea
-          port: 80
+        - name: gitea-http
+          port: 3000
       middlewares:
       - name: http-to-https
   tls:
