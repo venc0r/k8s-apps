@@ -25,6 +25,8 @@ gitea:
       service:
         ssh:
           port: 2222
+      database:
+        HOST: gitea-postgresql-primary.gitea.svc.cluster.local:5432
   extraVolumes:
   - name: gitea-https-cert
     secret:
@@ -43,6 +45,7 @@ postgresql:
   architecture: replication
   replication:
     synchronousCommit: local
+    numSynchronousReplicas: 1
   persistence:
     storageClass: csi
   tls:
