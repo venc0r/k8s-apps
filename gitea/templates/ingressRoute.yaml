@@ -7,6 +7,15 @@ spec:
   redirectScheme:
     scheme: https
     permanent: true
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: ServersTransport
+metadata:
+  name: gitea-tls-backend
+spec:
+  serverName: gitea.k3s.v3nc.org
+
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
@@ -24,6 +33,7 @@ spec:
           port: 3000
       middlewares:
       - name: http-to-https
+
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
@@ -39,6 +49,7 @@ spec:
       services:
         - name: gitea-http
           port: 3000
+          serversTransport: gitea-tls-backend
       middlewares:
       - name: http-to-https
   tls:

@@ -5,6 +5,29 @@ gitea:
     admin:
       existingSecret: gitea-admin-secret
       email: joerg.markert@gmail.com
+    config:
+      APP_NAME: "Gitea: Kaffee und zwar schwarzer"
+      RUN_MODE: prod
+      server:
+        SSH_PORT: 2222
+        PROTOCOL: https
+        DOMAIN: gitea.k3s.v3nc.org
+        CERT_FILE: /gitea-https-cert/tls.crt
+        KEY_FILE: /gitea-https-cert/tls.key
+      security:
+        PASSWORD_COMPLEXITY: spec
+      database:
+      service:
+        ssh:
+          port: 2222
+  extraVolumes:
+  - name: gitea-https-cert
+    secret:
+      secretName: gitea-https-cert
+  extraVolumeMounts:
+  - name: gitea-https-cert
+    readOnly: true
+    mountPath: /gitea-https-cert
   postgresql:
     global:
       postgresql:
