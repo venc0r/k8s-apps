@@ -5,6 +5,12 @@ gitea:
     admin:
       existingSecret: gitea-admin-secret
       email: joerg.markert@gmail.com
+    additionalConfigFromEnvs:
+    - name: ENV_TO_INI__DATABASE__PASSWD
+      valueFrom:
+        secretKeyRef:
+          name: gitea-pgsql-secret
+          key: postges-password
     config:
       APP_NAME: "Gitea: Kaffee und zwar schwarzer"
       RUN_MODE: prod
@@ -16,7 +22,6 @@ gitea:
         KEY_FILE: /gitea-https-cert/tls.key
       security:
         PASSWORD_COMPLEXITY: spec
-      database:
       service:
         ssh:
           port: 2222
