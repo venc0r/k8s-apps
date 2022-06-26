@@ -19,12 +19,12 @@ gitea:
         MIN_PASSWORD_LENGTH: 8
       picture:
         DISABLE_GRAVATAR: true
-    service:
-      ssh:
-        port: 2222
-        externalIPs: ['213.95.154.35']
       database:
         PASSWD: <path:secret/data/k3s/gitea/pgsql#postgres-password>
+  service:
+    ssh:
+      port: 2222
+      externalIPs: ['213.95.154.35']
   extraVolumes:
   - name: gitea-https-cert
     secret:
