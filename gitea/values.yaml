@@ -8,19 +8,26 @@ gitea:
     config:
       APP_NAME: "Gitea: Kaffee! und zwar schwarzer"
       RUN_MODE: prod
+      database:
+        PASSWD: <path:secret/data/k3s/gitea/pgsql#postgres-password>
+      picture:
+        DISABLE_GRAVATAR: true
+      security:
+        PASSWORD_COMPLEXITY: spec
+        MIN_PASSWORD_LENGTH: 8
       server:
         SSH_PORT: 2222
         PROTOCOL: https
         DOMAIN: gitea.k3s.v3nc.org
         CERT_FILE: /gitea-https-cert/tls.crt
         KEY_FILE: /gitea-https-cert/tls.key
-      security:
-        PASSWORD_COMPLEXITY: spec
-        MIN_PASSWORD_LENGTH: 8
-      picture:
-        DISABLE_GRAVATAR: true
-      database:
-        PASSWD: <path:secret/data/k3s/gitea/pgsql#postgres-password>
+      service:
+        DISABLE_REGISTRATION: true
+        DEFAULT_KEEP_EMAIL_PRIVATE: true
+        DEFAULT_ORG_VISIBILITY: private
+        DEFAULT_USER_IS_RESTRICTED: true
+      repository:
+        FORCE_PRIVATE: true
   service:
     ssh:
       port: 2222
