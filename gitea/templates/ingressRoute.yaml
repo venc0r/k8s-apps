@@ -31,6 +31,7 @@ spec:
       services:
         - name: gitea-http
           port: 3000
+          scheme: https
       middlewares:
       - name: http-to-https
 
@@ -50,6 +51,7 @@ spec:
         - name: gitea-http
           port: 3000
           serversTransport: gitea-tls-backend
+          scheme: https
       middlewares:
       - name: http-to-https
   tls:
