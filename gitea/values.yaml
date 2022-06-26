@@ -1,22 +1,25 @@
 gitea:
   persistence:
     storageClass: csi
+  statefulset:
+    annotations:
+      avp.kubernetes.io/path: "secret/data/k3s/gitea/pgsql"
   gitea:
     admin:
       existingSecret: gitea-admin-secret
       email: joerg.markert@gmail.com
-    additionalConfigFromEnvs:
+    # additionalConfigFromEnvs:
     # - name: ENV_TO_INI__DATABASE__USERNAME
     #   value: postgres
     # - name: ENV_TO_INI__DATABASE__DB_TYPE
     #   value: postgres
     # - name: ENV_TO_INI__DATABASE__NAME
     #   value: gitea
-    - name: ENV_TO_INI__DATABASE__PASSWD
-      valueFrom:
-        secretKeyRef:
-          name: gitea-pgsql-secret
-          key: postgres-password
+    # - name: ENV_TO_INI__DATABASE__PASSWD
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: gitea-pgsql-secret
+    #       key: postgres-password
     config:
       APP_NAME: "Gitea: Kaffee und zwar schwarzer"
       RUN_MODE: prod
@@ -26,13 +29,13 @@ gitea:
         DOMAIN: gitea.k3s.v3nc.org
         CERT_FILE: /gitea-https-cert/tls.crt
         KEY_FILE: /gitea-https-cert/tls.key
-      security:
-        PASSWORD_COMPLEXITY: spec
+      # security:
+      #   PASSWORD_COMPLEXITY: spec
       service:
         ssh:
           port: 2222
-      # database:
-        # HOST: gitea-postgresql-primary.gitea.svc.cluster.local:5432
+      database:
+        PASSWD: <postgres-password>
   extraVolumes:
   - name: gitea-https-cert
     secret:
@@ -45,7 +48,8 @@ gitea:
     enabled: true
     global:
       postgresql:
-        servicePort: 5432
+        postgresqlPassword: <postgres-password>
+    commonAnnotations: {}
     persistence:
       size: 10Gi
       storageClass: csi
