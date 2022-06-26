@@ -22,7 +22,7 @@ gitea:
     service:
       ssh:
         port: 2222
-        externalIPs: 213.95.154.35
+        externalIPs: ['213.95.154.35']
       database:
         PASSWD: <path:secret/data/k3s/gitea/pgsql#postgres-password>
   extraVolumes:
