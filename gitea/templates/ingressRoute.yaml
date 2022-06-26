@@ -66,7 +66,7 @@ spec:
   entryPoints:
     - ssh
   routes:
-    - match: HostSNI(`gitea.k3s.v3nc.org`)
+    - match: HostSNI(`*`)
       services:
         - name: gitea-ssh
           port: 22
