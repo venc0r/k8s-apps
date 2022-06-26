@@ -18,7 +18,9 @@ spec:
       - "--entryPoints.web.proxyProtocol.trustedIPs=127.0.0.1/32,10.11.12.0/24"
       - "--entryPoints.websecure.proxyProtocol.trustedIPs=127.0.0.1/32,10.11.12.0/24"
       - "--providers.kubernetesIngress.ingressClass=traefik-cert-manager"
-
+    ports:
+      web:
+        redirectTo: websecure
 # See https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml for more examples
 # The deployment.kind=DaemonSet and hostNetwork=true is to get real ip and x-forwarded for, and can be omitted if this is
 # not needed.
