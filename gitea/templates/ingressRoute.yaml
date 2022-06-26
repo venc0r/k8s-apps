@@ -56,3 +56,18 @@ spec:
       - name: http-to-https
   tls:
     secretName: gitea-https-cert
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: gitea-ssh
+spec:
+  entryPoints:
+    - ssh
+  routes:
+    - match: 'Host(`gitea.k3s.v3nc.org`)'
+      priority: 10
+      services:
+        - name: gitea-ssh
+          port: 2222

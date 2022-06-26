@@ -6,7 +6,7 @@ gitea:
       existingSecret: gitea-admin-secret
       email: joerg.markert@gmail.com
     config:
-      APP_NAME: "Gitea: Kaffee und zwar schwarzer"
+      APP_NAME: "Gitea: Kaffee! und zwar schwarzer"
       RUN_MODE: prod
       server:
         SSH_PORT: 2222
@@ -14,11 +14,14 @@ gitea:
         DOMAIN: gitea.k3s.v3nc.org
         CERT_FILE: /gitea-https-cert/tls.crt
         KEY_FILE: /gitea-https-cert/tls.key
-      # security:
-      #   PASSWORD_COMPLEXITY: spec
-      service:
-        ssh:
-          port: 2222
+      security:
+        PASSWORD_COMPLEXITY: spec
+        MIN_PASSWORD_LENGTH: 8
+      picture:
+        DISABLE_GRAVATAR: true
+    service:
+      ssh:
+        port: 2222
       database:
         PASSWD: <path:secret/data/k3s/gitea/pgsql#postgres-password>
   extraVolumes:
