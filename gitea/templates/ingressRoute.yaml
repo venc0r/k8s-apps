@@ -57,16 +57,16 @@ spec:
   tls:
     secretName: gitea-https-cert
 
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRouteTCP
-metadata:
-  name: gitea-ssh
-spec:
-  entryPoints:
-    - ssh
-  routes:
-    - match: HostSNI(`*`)
-      services:
-        - name: gitea-ssh
-          port: 22
+# ---
+# apiVersion: traefik.containo.us/v1alpha1
+# kind: IngressRouteTCP
+# metadata:
+#   name: gitea-ssh
+# spec:
+#   entryPoints:
+#     - ssh
+#   routes:
+#     - match: HostSNI(`*`)
+#       services:
+#         - name: gitea-ssh
+#           port: 22
