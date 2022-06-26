@@ -30,7 +30,7 @@ gitea:
         FORCE_PRIVATE: true
       ui:
         explore:
-          REQUIRE_SIGNIN_VIEW: true
+          REQUIRE_SIGNED_IN: true
   service:
     ssh:
       port: 2222
