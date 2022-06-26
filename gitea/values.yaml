@@ -28,6 +28,7 @@ gitea:
         DEFAULT_USER_IS_RESTRICTED: true
         explore:
           REQUIRE_SIGNIN_VIEW: true
+          DISABLE_USERS_PAGE: true
       repository:
         FORCE_PRIVATE: true
   service:
