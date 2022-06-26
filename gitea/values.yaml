@@ -8,18 +8,18 @@ gitea:
     admin:
       existingSecret: gitea-admin-secret
       email: joerg.markert@gmail.com
-    # additionalConfigFromEnvs:
+    additionalConfigFromEnvs:
     # - name: ENV_TO_INI__DATABASE__USERNAME
     #   value: postgres
     # - name: ENV_TO_INI__DATABASE__DB_TYPE
     #   value: postgres
     # - name: ENV_TO_INI__DATABASE__NAME
     #   value: gitea
-    # - name: ENV_TO_INI__DATABASE__PASSWD
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: gitea-pgsql-secret
-    #       key: postgres-password
+    - name: ENV_TO_INI__DATABASE__PASSWD
+      valueFrom:
+        secretKeyRef:
+          name: gitea-pgsql-secret
+          key: postgres-password
     config:
       APP_NAME: "Gitea: Kaffee und zwar schwarzer"
       RUN_MODE: prod
@@ -49,7 +49,8 @@ gitea:
     global:
       postgresql:
         postgresqlPassword: <postgres-password>
-    commonAnnotations: {}
+    commonAnnotations:
+      avp.kubernetes.io/path: "secret/data/k3s/gitea/pgsql"
     persistence:
       size: 10Gi
       storageClass: csi
