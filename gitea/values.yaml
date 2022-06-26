@@ -26,11 +26,11 @@ gitea:
         DEFAULT_KEEP_EMAIL_PRIVATE: true
         DEFAULT_ORG_VISIBILITY: private
         DEFAULT_USER_IS_RESTRICTED: true
+        explore:
+          REQUIRE_SIGNIN_VIEW: true
+          DISABLE_USERS_PAGE: true
       repository:
         FORCE_PRIVATE: true
-      ui:
-        explore:
-          REQUIRE_SIGNED_IN: true
   service:
     ssh:
       port: 2222
