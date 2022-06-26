@@ -33,7 +33,7 @@ spec:
           port: 3000
           scheme: https
       middlewares:
-      - name: http-to-https
+        - name: http-to-https
 
 ---
 apiVersion: traefik.containo.us/v1alpha1
@@ -53,7 +53,7 @@ spec:
           serversTransport: gitea-tls-backend
           scheme: https
       middlewares:
-      - name: http-to-https
+        - name: http-to-https
   tls:
     secretName: gitea-https-cert
 
@@ -67,7 +67,6 @@ spec:
     - ssh
   routes:
     - match: 'Host(`gitea.k3s.v3nc.org`)'
-      priority: 10
       services:
         - name: gitea-ssh
           port: 2222
