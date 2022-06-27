@@ -2311,7 +2311,6 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.3.0
-  creationTimestamp: null
   name: applicationsets.argoproj.io
 spec:
   group: argoproj.io
@@ -9624,7 +9623,6 @@ metadata:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  creationTimestamp: null
   name: argocd-notifications-cm
   namespace: argocd
 ---
