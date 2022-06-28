@@ -4,10 +4,10 @@ metadata:
   name: argocd-https-cert
   namespace: argocd
 spec:
-  commonName: argocd.v3nc.org
+  commonName: argocd.k3s.v3nc.org
   secretName: argocd-https-cert
   dnsNames:
-    - argocd.v3nc.org
+    - argocd.k3s.v3nc.org
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
