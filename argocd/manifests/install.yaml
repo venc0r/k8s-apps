@@ -9659,7 +9659,6 @@ metadata:
   namespace: argocd
 ---
 apiVersion: v1
-data: null
 kind: ConfigMap
 metadata:
   labels:
