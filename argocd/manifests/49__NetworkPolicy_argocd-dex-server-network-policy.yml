@@ -4,6 +4,8 @@ kind: NetworkPolicy
 metadata:
   name: argocd-dex-server-network-policy
   namespace: argocd
+  labels:
+    app.kubernetes.io/instance: argocd
 spec:
   ingress:
     - from:

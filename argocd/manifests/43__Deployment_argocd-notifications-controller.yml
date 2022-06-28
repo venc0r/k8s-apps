@@ -4,6 +4,8 @@ kind: Deployment
 metadata:
   name: argocd-notifications-controller
   namespace: argocd
+  labels:
+    app.kubernetes.io/instance: argocd
 spec:
   selector:
     matchLabels:
