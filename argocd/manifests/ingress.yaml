@@ -1,15 +1,5 @@
 ---
 apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: http-to-https
-  namespace: argocd
-spec:
-  redirectScheme:
-    scheme: https
-    permanent: true
----
-apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: argocd-server
@@ -24,9 +14,6 @@ spec:
       services:
         - name: argocd-server
           port: 80
-      middlewares:
-      - name: http-to-https
-        namespace: argocd
     - kind: Rule
       match: 'Host(`argocd.v3nc.org`) && Headers(`Content-Type`, `application/grpc`)'
       priority: 11
