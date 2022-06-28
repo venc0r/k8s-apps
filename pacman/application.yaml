@@ -4,7 +4,7 @@ metadata:
   name: pacman
   namespace: argocd
 spec:
-  project: default
+  project: apps
   source:
     repoURL: ssh://git@g1tl4b.dynamic-dns.net:2222/venc0r/k8s-apps
     path: pacman
