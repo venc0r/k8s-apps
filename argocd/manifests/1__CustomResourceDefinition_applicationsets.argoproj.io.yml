@@ -5,6 +5,8 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.3.0
   name: applicationsets.argoproj.io
+  labels:
+    app.kubernetes.io/instance: argocd
 spec:
   group: argoproj.io
   names:

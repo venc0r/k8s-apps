@@ -4,6 +4,8 @@ kind: Role
 metadata:
   name: argocd-notifications-controller
   namespace: argocd
+  labels:
+    app.kubernetes.io/instance: argocd
 rules:
   - apiGroups:
       - argoproj.io
