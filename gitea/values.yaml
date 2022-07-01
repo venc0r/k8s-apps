@@ -27,7 +27,6 @@ gitea:
         DEFAULT_ORG_VISIBILITY: private
         DEFAULT_USER_IS_RESTRICTED: true
         REQUIRE_SIGNIN_VIEW: true
-        DISABLE_USERS_PAGE: true
       repository:
         FORCE_PRIVATE: true
   service:
