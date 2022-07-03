@@ -2,7 +2,7 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: TLSOption
 metadata:
-  name: tlsOptions
+  name: tls-options
 spec:
   minVersion: VersionTLS12
 ---
@@ -50,5 +50,5 @@ spec:
       - name: http-to-https
   tls:
     options:
-      name: tlsOptions
+      name: tls-options
     secretName: pacman-https-cert
