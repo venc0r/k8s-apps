@@ -73,6 +73,6 @@ spec:
       - name: http-to-https
       - name: security
   tls:
+    secretName: pacman-https-cert
     options:
       name: tls-options
-    secretName: pacman-https-cert
