@@ -80,6 +80,8 @@ spec:
           port: 8200
           scheme: https
           serversTransport: vault-tls-backend
+      middlewares:
+      - name: security
   tls:
     secretName: vault-https-cert
     options:
