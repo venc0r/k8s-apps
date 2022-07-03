@@ -1,5 +1,33 @@
 ---
 apiVersion: traefik.containo.us/v1alpha1
+kind: TLSOption
+metadata:
+  name: tls-options
+spec:
+  minVersion: VersionTLS12
+  cipherSuites:
+  - TLS_AES_128_GCM_SHA256
+  - TLS_AES_256_GCM_SHA384
+  - TLS_CHACHA20_POLY1305_SHA256
+  - TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+  - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+  - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: security
+spec:
+  headers:
+    frameDeny: true
+    customResponseHeaders:
+      Strict-Transport-Security: "max-age=31536000; includeSubdomains; preload"
+      server: ""
+    browserXssFilter: true
+
+---
+apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: argocd-server
@@ -23,5 +51,9 @@ spec:
         - name: argocd-server
           port: 80
           scheme: h2c
+      middlewares:
+        - name: security
   tls:
     secretName: argocd-https-cert
+    options:
+      name: tls-options
