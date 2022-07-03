@@ -1,5 +1,12 @@
 ---
 apiVersion: traefik.containo.us/v1alpha1
+kind: TLSOption
+metadata:
+  name: tlsOptions
+spec:
+  minVersion: VersionTLS12
+---
+apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   name: http-to-https
@@ -42,4 +49,6 @@ spec:
       middlewares:
       - name: http-to-https
   tls:
+    options:
+      name: tlsOptions
     secretName: pacman-https-cert
