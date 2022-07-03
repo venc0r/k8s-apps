@@ -20,8 +20,8 @@ metadata:
   name: security
 spec:
   headers:
-    framedeny: true
-    customresponseheaders:
+    frameDeny: true
+    customResponseHeaders:
       Strict-Transport-Security: "max-age=31536000; includeSubdomains; preload"
       server: ""
     browserXssFilter: true
