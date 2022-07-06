@@ -1,0 +1,13 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: security
+spec:
+  headers:
+    frameDeny: true
+    customResponseHeaders:
+      Strict-Transport-Security: "max-age=31536000; includeSubdomains; preload"
+      server: ""
+    browserXssFilter: true
+
