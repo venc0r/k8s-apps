@@ -4545,31 +4545,6 @@ spec:
                                     - owner
                                     - repo
                                     type: object
-                                  gitlab:
-                                    properties:
-                                      api:
-                                        type: string
-                                      labels:
-                                        items:
-                                          type: string
-                                        type: array
-                                      project:
-                                        type: string
-                                      pullRequestState:
-                                        type: string
-                                      tokenRef:
-                                        properties:
-                                          key:
-                                            type: string
-                                          secretName:
-                                            type: string
-                                        required:
-                                        - key
-                                        - secretName
-                                        type: object
-                                    required:
-                                    - project
-                                    type: object
                                   requeueAfterSeconds:
                                     format: int64
                                     type: integer
@@ -4831,31 +4806,6 @@ spec:
                                 type: object
                               scmProvider:
                                 properties:
-                                  azureDevOps:
-                                    properties:
-                                      accessTokenRef:
-                                        properties:
-                                          key:
-                                            type: string
-                                          secretName:
-                                            type: string
-                                        required:
-                                        - key
-                                        - secretName
-                                        type: object
-                                      allBranches:
-                                        type: boolean
-                                      api:
-                                        type: string
-                                      organization:
-                                        type: string
-                                      teamProject:
-                                        type: string
-                                    required:
-                                    - accessTokenRef
-                                    - organization
-                                    - teamProject
-                                    type: object
                                   bitbucket:
                                     properties:
                                       allBranches:
@@ -5255,29 +5205,6 @@ spec:
                                     required:
                                     - metadata
                                     - spec
-                                    type: object
-                                type: object
-                              selector:
-                                properties:
-                                  matchExpressions:
-                                    items:
-                                      properties:
-                                        key:
-                                          type: string
-                                        operator:
-                                          type: string
-                                        values:
-                                          items:
-                                            type: string
-                                          type: array
-                                      required:
-                                      - key
-                                      - operator
-                                      type: object
-                                    type: array
-                                  matchLabels:
-                                    additionalProperties:
-                                      type: string
                                     type: object
                                 type: object
                             type: object
@@ -6771,31 +6698,6 @@ spec:
                                     - owner
                                     - repo
                                     type: object
-                                  gitlab:
-                                    properties:
-                                      api:
-                                        type: string
-                                      labels:
-                                        items:
-                                          type: string
-                                        type: array
-                                      project:
-                                        type: string
-                                      pullRequestState:
-                                        type: string
-                                      tokenRef:
-                                        properties:
-                                          key:
-                                            type: string
-                                          secretName:
-                                            type: string
-                                        required:
-                                        - key
-                                        - secretName
-                                        type: object
-                                    required:
-                                    - project
-                                    type: object
                                   requeueAfterSeconds:
                                     format: int64
                                     type: integer
@@ -7057,31 +6959,6 @@ spec:
                                 type: object
                               scmProvider:
                                 properties:
-                                  azureDevOps:
-                                    properties:
-                                      accessTokenRef:
-                                        properties:
-                                          key:
-                                            type: string
-                                          secretName:
-                                            type: string
-                                        required:
-                                        - key
-                                        - secretName
-                                        type: object
-                                      allBranches:
-                                        type: boolean
-                                      api:
-                                        type: string
-                                      organization:
-                                        type: string
-                                      teamProject:
-                                        type: string
-                                    required:
-                                    - accessTokenRef
-                                    - organization
-                                    - teamProject
-                                    type: object
                                   bitbucket:
                                     properties:
                                       allBranches:
@@ -7483,29 +7360,6 @@ spec:
                                     - spec
                                     type: object
                                 type: object
-                              selector:
-                                properties:
-                                  matchExpressions:
-                                    items:
-                                      properties:
-                                        key:
-                                          type: string
-                                        operator:
-                                          type: string
-                                        values:
-                                          items:
-                                            type: string
-                                          type: array
-                                      required:
-                                      - key
-                                      - operator
-                                      type: object
-                                    type: array
-                                  matchLabels:
-                                    additionalProperties:
-                                      type: string
-                                    type: object
-                                type: object
                             type: object
                           type: array
                         mergeKeys:
@@ -7862,31 +7716,6 @@ spec:
                           - owner
                           - repo
                           type: object
-                        gitlab:
-                          properties:
-                            api:
-                              type: string
-                            labels:
-                              items:
-                                type: string
-                              type: array
-                            project:
-                              type: string
-                            pullRequestState:
-                              type: string
-                            tokenRef:
-                              properties:
-                                key:
-                                  type: string
-                                secretName:
-                                  type: string
-                              required:
-                              - key
-                              - secretName
-                              type: object
-                          required:
-                          - project
-                          type: object
                         requeueAfterSeconds:
                           format: int64
                           type: integer
@@ -8148,31 +7977,6 @@ spec:
                       type: object
                     scmProvider:
                       properties:
-                        azureDevOps:
-                          properties:
-                            accessTokenRef:
-                              properties:
-                                key:
-                                  type: string
-                                secretName:
-                                  type: string
-                              required:
-                              - key
-                              - secretName
-                              type: object
-                            allBranches:
-                              type: boolean
-                            api:
-                              type: string
-                            organization:
-                              type: string
-                            teamProject:
-                              type: string
-                          required:
-                          - accessTokenRef
-                          - organization
-                          - teamProject
-                          type: object
                         bitbucket:
                           properties:
                             allBranches:
@@ -8574,33 +8378,8 @@ spec:
                           - spec
                           type: object
                       type: object
-                    selector:
-                      properties:
-                        matchExpressions:
-                          items:
-                            properties:
-                              key:
-                                type: string
-                              operator:
-                                type: string
-                              values:
-                                items:
-                                  type: string
-                                type: array
-                            required:
-                            - key
-                            - operator
-                            type: object
-                          type: array
-                        matchLabels:
-                          additionalProperties:
-                            type: string
-                          type: object
-                      type: object
                   type: object
                 type: array
-              goTemplate:
-                type: boolean
               syncPolicy:
                 properties:
                   preserveResourcesOnDeletion:
@@ -9121,12 +8900,6 @@ spec:
                   - keyID
                   type: object
                 type: array
-              sourceNamespaces:
-                description: SourceNamespaces defines the namespaces application resources
-                  are allowed to be created in
-                items:
-                  type: string
-                type: array
               sourceRepos:
                 description: SourceRepos contains list of repository URLs which can
                   be used for deployment
@@ -9247,10 +9020,6 @@ metadata:
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  labels:
-    app.kubernetes.io/component: notifications-controller
-    app.kubernetes.io/name: argocd-notifications-controller
-    app.kubernetes.io/part-of: argocd
   name: argocd-notifications-controller
 ---
 apiVersion: v1
@@ -9538,14 +9307,6 @@ rules:
   - pods/log
   verbs:
   - get
-- apiGroups:
-  - argoproj.io
-  resources:
-  - applications
-  verbs:
-  - get
-  - list
-  - watch
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -9964,7 +9725,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        image: quay.io/argoproj/argocd:latest
+        image: quay.io/argoproj/argocd:v2.4.9
         imagePullPolicy: Always
         name: argocd-applicationset-controller
         ports:
@@ -9979,8 +9740,6 @@ spec:
             - ALL
           readOnlyRootFilesystem: true
           runAsNonRoot: true
-          seccompProfile:
-            type: RuntimeDefault
         volumeMounts:
         - mountPath: /app/config/ssh
           name: ssh-known-hosts
@@ -10038,14 +9797,7 @@ spec:
       - command:
         - /shared/argocd-dex
         - rundex
-        env:
-        - name: ARGOCD_DEX_SERVER_DISABLE_TLS
-          valueFrom:
-            configMapKeyRef:
-              key: dexserver.disable.tls
-              name: argocd-cmd-params-cm
-              optional: true
-        image: ghcr.io/dexidp/dex:v2.32.0-distroless
+        image: ghcr.io/dexidp/dex:v2.32.0
         imagePullPolicy: Always
         name: dex
         ports:
@@ -10059,22 +9811,18 @@ spec:
             - ALL
           readOnlyRootFilesystem: true
           runAsNonRoot: true
-          seccompProfile:
-            type: RuntimeDefault
         volumeMounts:
         - mountPath: /shared
           name: static-files
         - mountPath: /tmp
           name: dexconfig
-        - mountPath: /tls
-          name: argocd-dex-server-tls
       initContainers:
       - command:
         - cp
         - -n
         - /usr/local/bin/argocd
         - /shared/argocd-dex
-        image: quay.io/argoproj/argocd:latest
+        image: quay.io/argoproj/argocd:v2.4.9
         imagePullPolicy: Always
         name: copyutil
         securityContext:
@@ -10084,8 +9832,6 @@ spec:
             - ALL
           readOnlyRootFilesystem: true
           runAsNonRoot: true
-          seccompProfile:
-            type: RuntimeDefault
         volumeMounts:
         - mountPath: /shared
           name: static-files
@@ -10097,17 +9843,6 @@ spec:
         name: static-files
       - emptyDir: {}
         name: dexconfig
-      - name: argocd-dex-server-tls
-        secret:
-          items:
-          - key: tls.crt
-            path: tls.crt
-          - key: tls.key
-            path: tls.key
-          - key: ca.crt
-            path: ca.crt
-          optional: true
-          secretName: argocd-dex-server-tls
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -10127,7 +9862,7 @@ spec:
       containers:
       - command:
         - argocd-notifications
-        image: quay.io/argoproj/argocd:latest
+        image: quay.io/argoproj/argocd:v2.4.9
         imagePullPolicy: Always
         livenessProbe:
           tcpSocket:
@@ -10147,8 +9882,6 @@ spec:
         workingDir: /app
       securityContext:
         runAsNonRoot: true
-        seccompProfile:
-          type: RuntimeDefault
       serviceAccountName: argocd-notifications-controller
       volumes:
       - configMap:
@@ -10213,12 +9946,10 @@ spec:
           allowPrivilegeEscalation: false
           capabilities:
             drop:
-            - ALL
+            - all
       securityContext:
         runAsNonRoot: true
         runAsUser: 999
-        seccompProfile:
-          type: RuntimeDefault
       serviceAccountName: argocd-redis
 ---
 apiVersion: apps/v1
@@ -10350,19 +10081,13 @@ spec:
               key: reposerver.plugin.tar.exclusions
               name: argocd-cmd-params-cm
               optional: true
-        - name: ARGOCD_REPO_SERVER_ALLOW_OUT_OF_BOUNDS_SYMLINKS
-          valueFrom:
-            configMapKeyRef:
-              key: reposerver.allow.oob.symlinks
-              name: argocd-cmd-params-cm
-              optional: true
         - name: HELM_CACHE_HOME
           value: /helm-working-dir
         - name: HELM_CONFIG_HOME
           value: /helm-working-dir
         - name: HELM_DATA_HOME
           value: /helm-working-dir
-        image: quay.io/argoproj/argocd:latest
+        image: quay.io/argoproj/argocd:v2.4.9
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 3
@@ -10372,9 +10097,6 @@ spec:
           initialDelaySeconds: 30
           periodSeconds: 5
         name: argocd-repo-server
-        envFrom:
-        - secretRef:
-            name: argocd-vault-plugin-credentials
         ports:
         - containerPort: 8081
         - containerPort: 8084
@@ -10388,11 +10110,9 @@ spec:
           allowPrivilegeEscalation: false
           capabilities:
             drop:
-            - ALL
+            - all
           readOnlyRootFilesystem: true
           runAsNonRoot: true
-          seccompProfile:
-            type: RuntimeDefault
         volumeMounts:
         - mountPath: /app/config/ssh
           name: ssh-known-hosts
@@ -10410,26 +10130,21 @@ spec:
           name: helm-working-dir
         - mountPath: /home/argocd/cmp-server/plugins
           name: plugins
-        - name: custom-tools
-          mountPath: /usr/local/bin/argocd-vault-plugin
-          subPath: argocd-vault-plugin
       initContainers:
       - command:
         - cp
         - -n
         - /usr/local/bin/argocd
         - /var/run/argocd/argocd-cmp-server
-        image: quay.io/argoproj/argocd:latest
+        image: quay.io/argoproj/argocd:v2.4.9
         name: copyutil
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
             drop:
-            - ALL
+            - all
           readOnlyRootFilesystem: true
           runAsNonRoot: true
-          seccompProfile:
-            type: RuntimeDefault
         volumeMounts:
         - mountPath: /var/run/argocd
           name: var-files
@@ -10536,7 +10251,7 @@ spec:
               key: server.log.format
               name: argocd-cmd-params-cm
               optional: true
-        - name: ARGOCD_SERVER_LOG_LEVEL
+        - name: ARGOCD_REPO_SERVER_LOGLEVEL
           valueFrom:
             configMapKeyRef:
               key: server.log.level
@@ -10594,18 +10309,6 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: server.repo.server.strict.tls
-              name: argocd-cmd-params-cm
-              optional: true
-        - name: ARGOCD_SERVER_DEX_SERVER_PLAINTEXT
-          valueFrom:
-            configMapKeyRef:
-              key: server.dex.server.plaintext
-              name: argocd-cmd-params-cm
-              optional: true
-        - name: ARGOCD_SERVER_DEX_SERVER_STRICT_TLS
-          valueFrom:
-            configMapKeyRef:
-              key: server.dex.server.strict.tls
               name: argocd-cmd-params-cm
               optional: true
         - name: ARGOCD_TLS_MIN_VERSION
@@ -10686,13 +10389,7 @@ spec:
               key: otlp.address
               name: argocd-cmd-params-cm
               optional: true
-        - name: ARGOCD_APPLICATION_NAMESPACES
-          valueFrom:
-            configMapKeyRef:
-              key: application.namespaces
-              name: argocd-cmd-params-cm
-              optional: true
-        image: quay.io/argoproj/argocd:latest
+        image: quay.io/argoproj/argocd:v2.4.9
         imagePullPolicy: Always
         livenessProbe:
           httpGet:
@@ -10714,11 +10411,9 @@ spec:
           allowPrivilegeEscalation: false
           capabilities:
             drop:
-            - ALL
+            - all
           readOnlyRootFilesystem: true
           runAsNonRoot: true
-          seccompProfile:
-            type: RuntimeDefault
         volumeMounts:
         - mountPath: /app/config/ssh
           name: ssh-known-hosts
@@ -10726,8 +10421,6 @@ spec:
           name: tls-certs
         - mountPath: /app/config/server/tls
           name: argocd-repo-server-tls
-        - mountPath: /app/config/dex/tls
-          name: argocd-dex-server-tls
         - mountPath: /home/argocd
           name: plugins-home
         - mountPath: /tmp
@@ -10755,15 +10448,6 @@ spec:
             path: ca.crt
           optional: true
           secretName: argocd-repo-server-tls
-      - name: argocd-dex-server-tls
-        secret:
-          items:
-          - key: tls.crt
-            path: tls.crt
-          - key: ca.crt
-            path: ca.crt
-          optional: true
-          secretName: argocd-dex-server-tls
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -10907,14 +10591,14 @@ spec:
               key: otlp.address
               name: argocd-cmd-params-cm
               optional: true
-        - name: ARGOCD_APPLICATION_NAMESPACES
-          valueFrom:
-            configMapKeyRef:
-              key: application.namespaces
-              name: argocd-cmd-params-cm
-              optional: true
-        image: quay.io/argoproj/argocd:latest
+        image: quay.io/argoproj/argocd:v2.4.9
         imagePullPolicy: Always
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8082
+          initialDelaySeconds: 5
+          periodSeconds: 10
         name: argocd-application-controller
         ports:
         - containerPort: 8082
@@ -10928,11 +10612,9 @@ spec:
           allowPrivilegeEscalation: false
           capabilities:
             drop:
-            - ALL
+            - all
           readOnlyRootFilesystem: true
           runAsNonRoot: true
-          seccompProfile:
-            type: RuntimeDefault
         volumeMounts:
         - mountPath: /app/config/controller/tls
           name: argocd-repo-server-tls
@@ -10974,25 +10656,6 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: argocd-applicationset-controller-network-policy
-spec:
-  ingress:
-  - from:
-    - namespaceSelector: {}
-    ports:
-    - port: 7000
-      protocol: TCP
-    - port: 8080
-      protocol: TCP
-  podSelector:
-    matchLabels:
-      app.kubernetes.io/name: argocd-applicationset-controller
-  policyTypes:
-  - Ingress
----
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
   name: argocd-dex-server-network-policy
 spec:
   ingress:
@@ -11019,33 +10682,8 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: argocd-notifications-controller-network-policy
-spec:
-  ingress:
-  - from:
-    - namespaceSelector: {}
-    ports:
-    - port: 9001
-      protocol: TCP
-  podSelector:
-    matchLabels:
-      app.kubernetes.io/name: argocd-notifications-controller
-  policyTypes:
-  - Ingress
----
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
   name: argocd-redis-network-policy
 spec:
-  egress:
-  - ports:
-    - port: 53
-      protocol: UDP
-    - port: 53
-      protocol: TCP
-    to:
-    - namespaceSelector: {}
   ingress:
   - from:
     - podSelector:
@@ -11065,7 +10703,6 @@ spec:
       app.kubernetes.io/name: argocd-redis
   policyTypes:
   - Ingress
-  - Egress
 ---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
