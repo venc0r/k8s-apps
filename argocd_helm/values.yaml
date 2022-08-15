@@ -1,0 +1,2 @@
+global:
+    hostname: "argocd-helm.k3s.v3nc.org"
