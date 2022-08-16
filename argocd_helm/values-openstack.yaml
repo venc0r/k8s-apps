@@ -1,2 +1,2 @@
 global:
-    hostname: "argocd-helm.k3s.v3nc.org"
+    hostname: "argocd.k3s.v3nc.org"
