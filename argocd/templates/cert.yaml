@@ -5,10 +5,10 @@ metadata:
   labels:
     app.kubernetes.io/instance: argocd
 spec:
-  commonName: {{ .Values.global.hostname }}
+  commonName: {{ .Values.global.domain }}
   secretName: argocd-https-cert
   dnsNames:
-    - {{ .Values.global.hostname }}
+    - {{ .Values.global.domain }}
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
