@@ -3,10 +3,10 @@ kind: Certificate
 metadata:
   name: vault-https-cert
 spec:
-  commonName: vault.k3s.v3nc.org
+  commonName: {{ .Values.vault.server.domain }}
   secretName: vault-https-cert
   dnsNames:
-    - vault.k3s.v3nc.org
+    - {{ .Values.vault.server.domain }}
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer

@@ -18,7 +18,6 @@ gitea:
       server:
         SSH_PORT: 2222
         PROTOCOL: https
-        DOMAIN: gitea.k3s.v3nc.org
         CERT_FILE: /gitea-https-cert/tls.crt
         KEY_FILE: /gitea-https-cert/tls.key
       service:

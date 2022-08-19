@@ -4,7 +4,7 @@ openstack-cinder-csi:
     # TODO wenns credentials gelöst sind muss das cloud.conf werden
       cloud-config: |-
         [Global]
-        auth_url="https://api.wavestack.de:5000/v3"
+        auth-url="https://api.wavestack.de:5000/v3"
         username="nn-jmarkert"
         user-domain-name="noris.de"
         password=""

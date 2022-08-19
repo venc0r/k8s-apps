@@ -3,10 +3,10 @@ kind: Certificate
 metadata:
   name: gitea-https-cert
 spec:
-  commonName: gitea.k3s.v3nc.org
+  commonName: {{ .Values.gitea.gitea.server.DOMAIN }}
   secretName: gitea-https-cert
   dnsNames:
-    - gitea.k3s.v3nc.org
+    - {{ .Values.gitea.gitea.server.DOMAIN }}
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer

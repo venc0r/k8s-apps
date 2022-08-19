@@ -1,0 +1,3 @@
+vault:
+  server:
+    domain: vault.k3s.v3nc.org

@@ -1,0 +1,3 @@
+vault:
+  server:
+    domain: vault.ws.v3nc.org

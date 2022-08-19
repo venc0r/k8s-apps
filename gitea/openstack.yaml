@@ -1,0 +1,5 @@
+gitea:
+  gitea:
+    config:
+      server:
+        DOMAIN: gitea.k3s.v3nc.org

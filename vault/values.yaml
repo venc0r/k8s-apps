@@ -2,6 +2,7 @@ vault:
   global:
     tlsDisable: false
   server:
+    domain: vault.k3s.v3nc.org
     auditStorage:
       enabled: true
       storageClass: csi

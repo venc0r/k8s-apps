@@ -42,7 +42,7 @@ kind: ServersTransport
 metadata:
   name: vault-tls-backend
 spec:
-  serverName: vault.k3s.v3nc.org
+  serverName: {{ .Values.vault.server.domain }}
 
 ---
 apiVersion: traefik.containo.us/v1alpha1
@@ -54,7 +54,7 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: 'Host(`vault.k3s.v3nc.org`)'
+      match: 'Host(`{{ .Values.vault.server.domain }}`)'
       priority: 10
       services:
         - name: vault
@@ -73,7 +73,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: 'Host(`vault.k3s.v3nc.org`)'
+      match: 'Host(`{{ .Values.vault.servers.domain }}`)'
       priority: 10
       services:
         - name: vault

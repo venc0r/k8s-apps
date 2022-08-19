@@ -42,7 +42,7 @@ kind: ServersTransport
 metadata:
   name: gitea-tls-backend
 spec:
-  serverName: gitea.k3s.v3nc.org
+  serverName: {{ .Values.gitea.gitea.server.DOMAIN }}
 
 ---
 apiVersion: traefik.containo.us/v1alpha1
@@ -54,7 +54,7 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: 'Host(`gitea.k3s.v3nc.org`)'
+      match: 'Host(`{{ .Values.gitea.gitea.server.DOMAIN }}`)'
       priority: 10
       services:
         - name: gitea-http
@@ -73,7 +73,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: 'Host(`gitea.k3s.v3nc.org`)'
+      match: 'Host(`{{ .Values.gitea.gitea.server.DOMAIN }}`)'
       priority: 10
       services:
         - name: gitea-http
