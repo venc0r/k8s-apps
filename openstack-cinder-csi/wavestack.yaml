@@ -1,0 +1,15 @@
+openstack-cinder-csi:
+  secret:
+    data:
+    # TODO wenns credentials gelöst sind muss das cloud.conf werden
+      cloud-config: |-
+        [Global]
+        auth-url="https://de-nbg6-1.noris.cloud:5000/v3"
+        username="jmarkert"
+        user-domain-name="noris.de"
+        password=""
+        tenant-id=4dddce866d744599b947f3c18fd06be3
+        tenant-name=jmarkert
+        tenant-domain-name=noris.de
+        # tenant-domain-id=0fd4315f3f784ee2a37cfd9657385fe5
+        region=de-nbg6-1
