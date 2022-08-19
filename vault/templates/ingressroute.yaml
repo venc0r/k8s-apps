@@ -73,7 +73,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: 'Host(`{{ .Values.vault.servers.domain }}`)'
+      match: 'Host(`{{ .Values.vault.server.domain }}`)'
       priority: 10
       services:
         - name: vault
