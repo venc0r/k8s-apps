@@ -46,7 +46,7 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: 'Host(`pacman.k3s.v3nc.org`)'
+      match: 'Host(`{{ .Values.pacman.domain }}`)'
       priority: 10
       services:
         - name: pacman
@@ -64,7 +64,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: 'Host(`pacman.k3s.v3nc.org`)'
+      match: 'Host(`{{ .Values.pacman.domain }}`)'
       priority: 10
       services:
         - name: pacman

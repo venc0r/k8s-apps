@@ -3,10 +3,10 @@ kind: Certificate
 metadata:
   name: pacman-https-cert
 spec:
-  commonName: pacman.k3s.v3nc.org
+  commonName: {{ .Values.pacman.domain }}
   secretName: pacman-https-cert
   dnsNames:
-    - pacman.k3s.v3nc.org
+    - {{ .Values.pacman.domain }}
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
