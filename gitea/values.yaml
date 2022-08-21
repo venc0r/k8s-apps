@@ -28,11 +28,6 @@ gitea:
         REQUIRE_SIGNIN_VIEW: true
       repository:
         FORCE_PRIVATE: true
-  service:
-    ssh:
-      port: 2222
-      externalIPs: ['213.95.154.35']
-      type: LoadBalancer
   extraVolumes:
   - name: gitea-https-cert
     secret:
