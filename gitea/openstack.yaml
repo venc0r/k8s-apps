@@ -3,8 +3,3 @@ gitea:
     config:
       server:
         DOMAIN: gitea.k3s.v3nc.org
-  service:
-    ssh:
-      port: 2222
-      externalIPs: ['213.95.154.35']
-      type: LoadBalancer
