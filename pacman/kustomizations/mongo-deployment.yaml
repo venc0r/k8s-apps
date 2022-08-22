@@ -4,3 +4,5 @@ metadata:
   name: pacman-mongo-storage-claim
 spec:
   storageClassName: csi
+  accessModes:
+  - ReadWriteMany
