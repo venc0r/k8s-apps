@@ -12,7 +12,7 @@ vault:
     ha:
       enabled: true
       config: |
-        ui = false
+        ui = true
 
         listener "tcp" {
           tls_disable = "false"
