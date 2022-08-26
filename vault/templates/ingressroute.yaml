@@ -57,7 +57,7 @@ spec:
       match: 'Host(`{{ .Values.vault.server.domain }}`)'
       priority: 10
       services:
-        - name: vault-active
+        - name: vault
           port: 8200
           scheme: https
       middlewares:
@@ -76,7 +76,7 @@ spec:
       match: 'Host(`{{ .Values.vault.server.domain }}`)'
       priority: 10
       services:
-        - name: vault-active
+        - name: vault
           port: 8200
           scheme: https
           serversTransport: vault-tls-backend
