@@ -9,7 +9,7 @@ argo-cd:
     replicas: 2
     configEnabled: true
     config:
-      configManagementPlugins:
+      configManagementPlugins: |
         - name: kustomized-helm
           init:
             command: ["/bin/sh", "-c"]
