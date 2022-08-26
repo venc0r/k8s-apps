@@ -55,8 +55,15 @@ argo-cd:
           - mountPath: /custom-tools
             name: custom-tools
     volumes:
-    - name: custom-tools
-      emptyDir: {}
+      - name: custom-tools
+        emptyDir: {}
+    volumeMounts:
+      - name: custom-tools
+        mountPath: /usr/local/bin/argocd-vault-plugin
+        subPath: argocd-vault-plugin
+    envFrom:
+      - secretRef:
+        name: argocd-vault-plugin-credentials
 
     applicationSet:
       replicas: 2
