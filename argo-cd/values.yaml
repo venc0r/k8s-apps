@@ -54,6 +54,9 @@ argo-cd:
         volumeMounts:
           - mountPath: /custom-tools
             name: custom-tools
+    volumes:
+    - name: custom-tools
+      emptyDir: {}
 
     applicationSet:
       replicas: 2
