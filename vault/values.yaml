@@ -1,6 +1,4 @@
 vault:
-  ui:
-    enabled: true
   global:
     tlsDisable: false
   server:
