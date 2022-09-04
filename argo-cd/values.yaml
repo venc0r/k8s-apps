@@ -9,8 +9,10 @@ argo-cd:
     replicas: 2
     configEnabled: true
     config:
-      sshConfigs: |>
-        Host {{ .Values.global.domain }}
+      sshConfigs: |
+        Host argocd.ws.v3nc.org
+            KexAlgorithms ecdh-sha2-nistp521
+        Host argocd.k3s.v3nc.org
             KexAlgorithms ecdh-sha2-nistp521
       configManagementPlugins: |
         - name: kustomized-helm
