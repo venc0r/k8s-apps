@@ -62,7 +62,7 @@ argo-cd:
     volumes:
       - name: custom-tools
         emptyDir: {}
-      - name: ssh-config
+      - name: sshConfigs
         configMap:
           name: argocd-cm
           items:
