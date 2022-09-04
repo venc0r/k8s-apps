@@ -62,7 +62,7 @@ argo-cd:
     volumes:
       - name: custom-tools
         emptyDir: {}
-      - name: sshConfigs
+      - name: ssh-configs
         configMap:
           name: argocd-cm
           items:
@@ -72,7 +72,7 @@ argo-cd:
       - name: custom-tools
         mountPath: /usr/local/bin/argocd-vault-plugin
         subPath: argocd-vault-plugin
-      - name: sshConfigs
+      - name: ssh-configs
         mountPath: /home/argocd/.ssh/
     envFrom:
       - secretRef:
