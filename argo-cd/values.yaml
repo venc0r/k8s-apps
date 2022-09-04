@@ -10,9 +10,9 @@ argo-cd:
     configEnabled: true
     config:
       sshConfigs: |
-        Host argocd.ws.v3nc.org
+        Host gitea.ws.v3nc.org
             KexAlgorithms ecdh-sha2-nistp521
-        Host argocd.k3s.v3nc.org
+        Host gitea.k3s.v3nc.org
             KexAlgorithms ecdh-sha2-nistp521
       configManagementPlugins: |
         - name: kustomized-helm
