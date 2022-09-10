@@ -8,5 +8,5 @@ spec:
   dnsNames:
     - {{ .Values.pacman.domain }}
   issuerRef:
-    name: letsencrypt-prod
+    name: letsencrypt
     kind: ClusterIssuer

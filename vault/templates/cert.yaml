@@ -8,5 +8,5 @@ spec:
   dnsNames:
     - {{ .Values.vault.server.domain }}
   issuerRef:
-    name: letsencrypt-prod
+    name: letsencrypt
     kind: ClusterIssuer

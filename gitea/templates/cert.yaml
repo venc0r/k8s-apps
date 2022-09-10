@@ -8,5 +8,5 @@ spec:
   dnsNames:
     - {{ .Values.gitea.gitea.config.server.DOMAIN }}
   issuerRef:
-    name: letsencrypt-prod
+    name: letsencrypt
     kind: ClusterIssuer
