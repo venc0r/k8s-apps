@@ -1,7 +1,4 @@
-cert-manager:
-  installCRDs: true
-
 ClusterIssuer:
   acme:
     email: venc0r@live.com
-    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    server: https://acme-v02.api.letsencrypt.org/directory
