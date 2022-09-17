@@ -1,6 +1,8 @@
 gitea:
   persistence:
     storageClass: csi
+  image:
+    rootless: true
   gitea:
     admin:
       existingSecret: gitea-admin-secret
