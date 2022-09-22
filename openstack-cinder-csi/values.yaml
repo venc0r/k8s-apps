@@ -38,3 +38,5 @@ openstack-cinder-csi:
       provisioner: cinder.csi.openstack.org
       volumeBindingMode: WaitForFirstConsumer
       allowVolumeExpansion: true
+      parameters:
+        type: multiattach=<is> True
