@@ -1,42 +1,42 @@
 ---
+# the user for your backup container
 securityContext:
-  runAsUser: 1000
+  # runAsUser: 1000
 
-schedule: "*/15 * * * *"
+schedule: "0 0 * * *"
 
-shellCommand: gitea dump -c /data/gitea/conf/app.ini --type tar.gz -f /mnt/gitea-backup/gitea-os-$(date +%s)
+# example: mkdir -p /tmp/gitea && gitea dump -c /data/gitea/conf/app.ini --type tar.gz -f /mnt/gitea-backup/gitea-os-$(date +%s)
+shellCommand: echo "update your shellCommand to backup && exit 1"
 
-volumes:
-  - name: gitea-backup
-    iscsi:
-      targetPortal: 192.168.88.50
-      iqn: iqn.2003-01.org.linux-iscsi.archlinux.x8664:sn.43fb4d620c83
-      lun: 0
-      fsType: ext4
-      readOnly: false
-      chapAuthDiscovery: false
-      chapAuthSession: true
-      secretRef:
-        name: chap-secret
-  - name: gitea-data
-    persistentVolumeClaim:
-      claimName: data-gitea-0
+# add your source and target volumes
+# volumes:
+#  - name: gitea-backup
+#    persistentVolumeClaim:
+#      claimName: backup-gitea-0
+#  - name: gitea-data
+#    persistentVolumeClaim:
+#      claimName: data-gitea-0
 
-volumeMounts:
-  - mountPath: /mnt/gitea-backup
-    name: gitea-backup
-  - mountPath: /mnt/gitea-data
-    name: gitea-data
+# add the mount paths to the defined volumes
+# volumeMounts:
+#   - mountPath: /mnt/gitea-backup
+#     name: gitea-backup
+#   - mountPath: /data
+#     name: gitea-data
 
-permissions:
-  dir: /mnt/gitea-backup
-  owner: "1000"
-  group: "1000"
+# the target have to be owned by the correct user
+# if there is more than one dir to chown just apped it to the string
+# permissions:
+#   dirs: /mnt/gitea-backup
+#   owner: "1000"
+#   group: "1000"
 
-matchExpressions:
-  - key: statefulset.kubernetes.io/pod-name
-    operator: In
-    values:
-      - gitea-0
+# the backup job have to run on the same name as the pod
+# matchExpressions: {}
+#   - key: statefulset.kubernetes.io/pod-name
+#     operator: In
+#     values:
+#       - gitea-0
 
-image: gitea/gitea:1.16.8-rootless
+# use the appropriate image containing your backup tool of choice
+image: busybox

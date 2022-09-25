@@ -13,6 +13,7 @@ spec:
         metadata:
           name: {{ include "backup.fullname" . }}
         spec:
+          {{ if .Values.matchExpressions }}
           affinity:
             podAffinity:
               requiredDuringSchedulingIgnoredDuringExecution:
@@ -20,18 +21,23 @@ spec:
                   matchExpressions:
                     {{- toYaml .Values.matchExpressions | nindent 18 }}
                 topologyKey: kubernetes.io/hostname
+          {{ end }}
+          {{ if .Values.permissions }}
           initContainers:
           - name: fix-permissions
             securityContext:
               runAsUser: 0
             image: busybox
-            command: ["sh", "-c", "chown {{ .Values.permissions.owner }}:{{ .Values.permissions.group }} {{ .Values.permissions.dir }}"]
+            command: ["sh", "-c", "chown {{ .Values.permissions.owner }}:{{ .Values.permissions.group }} {{ .Values.permissions.dirs }}"]
             volumeMounts:
               {{- toYaml .Values.volumeMounts | nindent 12 }}
+          {{ end }}
           containers:
           - name: {{ .Chart.Name }}
+            {{ if .Values.securityContext }}
             securityContext:
               {{- toYaml .Values.securityContext | nindent 14 }}
+            {{ end }}
             image: {{ .Values.image }}
             command:
             - sh

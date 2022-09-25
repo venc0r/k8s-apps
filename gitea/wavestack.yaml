@@ -1,3 +1,10 @@
+---
+backup:
+  volumes:
+    - name: gitea-backup
+      iscsi:
+        iqn: iqn.2003-01.org.linux-iscsi.archlinux.x8664:sn.43fb4d620c83
+
 gitea:
   gitea:
     config:

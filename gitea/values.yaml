@@ -1,13 +1,13 @@
+---
 backup:
   securityContext:
     runAsUser: 1000
-  schedule: "15/* * * * *"
-  shellCommand: gitea dump -c /data/gitea/conf/app.ini --type tar.gz -f /mnt/gitea-backup/gitea-os-$(date +%s)
+  schedule: "0 6 * * *"
+  shellCommand: mkdir /tmp/gitea && gitea dump -c /data/gitea/conf/app.ini --type tar.gz -f /mnt/gitea-backup/gitea-os-$(date +%s)
   volumes:
     - name: gitea-backup
       iscsi:
         targetPortal: 192.168.88.50
-        iqn: iqn.2003-01.org.linux-iscsi.archlinux.x8664:sn.43fb4d620c83
         lun: 0
         fsType: ext4
         readOnly: false
@@ -21,7 +21,7 @@ backup:
   volumeMounts:
     - mountPath: /mnt/gitea-backup
       name: gitea-backup
-    - mountPath: /mnt/gitea-data
+    - mountPath: /data
       name: gitea-data
   permissions:
     dir: /mnt/gitea-backup
@@ -70,11 +70,11 @@ gitea:
     ssh:
       port: 2222
       type: LoadBalancer
-  extraVolumes:
+  extraContainerVolumes:
   - name: gitea-https-cert
     secret:
       secretName: gitea-https-cert
-  extraVolumeMounts:
+  extraContainerVolumeMounts:
   - name: gitea-https-cert
     readOnly: true
     mountPath: /gitea-https-cert
