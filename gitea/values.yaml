@@ -4,10 +4,6 @@ backup:
     runAsUser: 1000
   schedule: "0 6 * * *"
   shellCommand: mkdir /tmp/gitea && gitea dump -c /data/gitea/conf/app.ini --type tar.gz -f /mnt/gitea-backup/gitea-os-$(date +%s)
-  volumes:
-    - name: gitea-data
-      PersistentVolumeClaim:
-        claimName: data-gitea-0
   volumeMounts:
     - mountPath: /mnt/gitea-backup
       name: gitea-backup

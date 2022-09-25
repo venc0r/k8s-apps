@@ -1,6 +1,9 @@
 ---
 backup:
   volumes:
+    - name: gitea-data
+      PersistentVolumeClaim:
+        claimName: data-gitea-0
     - name: gitea-backup
       iscsi:
         targetPortal: 192.168.88.50
