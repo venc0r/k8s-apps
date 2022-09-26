@@ -14,7 +14,7 @@ backup:
         chapAuthDiscovery: false
         chapAuthSession: true
         secretRef:
-          name: chap-secret
+          name: iscsi-chap-secret
 
 gitea:
   gitea:
