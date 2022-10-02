@@ -38,6 +38,14 @@ spec:
             securityContext:
               {{- toYaml .Values.securityContext | nindent 14 }}
             {{- end }}
+            {{- if .Values.env }}
+            env:
+              {{- toYaml .Values.env | nindent 14 }}
+            {{- end }}
+            {{- if .Values.envFrom }}
+            envFrom:
+              {{- toYaml .Values.envFrom | nindent 14 }}
+            {{- end }}
             image: {{ .Values.image }}
             command:
             - sh
