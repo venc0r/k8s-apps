@@ -1,3 +1,0 @@
-global:
-  domain: "argocd.k3s.v3nc.org"
-  vault_url: "https://vault.k3s.v3nc.org"
