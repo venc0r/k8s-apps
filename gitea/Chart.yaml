@@ -28,4 +28,4 @@ dependencies:
   repository: https://dl.gitea.io/charts/
 - name: backup
   version: 0.2.0
-  repository: https://gitea.os.v3nc.org/api/packages/venc0r/helm
+  repository: https://gitea.k3s.v3nc.org/api/packages/venc0r/helm
