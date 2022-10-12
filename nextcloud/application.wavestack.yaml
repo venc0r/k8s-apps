@@ -9,11 +9,10 @@ spec:
     repoURL: 'ssh://git@gitea.os.v3nc.org:2222/venc0r/k8s-apps.git'
     path: nextcloud
     targetRevision: HEAD
-    plugin:
-      name: argocd-vault-plugin-helm
-      env:
-        - name: PLUGIN_PARAMS
-          value: "-f values.yaml -f values.wavestack.yaml"
+    helm:
+      valueFiles:
+        - values.yaml
+        - values.wavestack.yaml
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: nextcloud
