@@ -10,7 +10,7 @@ nextcloud:
   mariadb:
     primary:
       persistence:
-        storageClass: csi-cinder-sc-delete-all-zones
+        storageClass: csi
 
   redis:
     enabled: false
