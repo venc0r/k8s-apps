@@ -32,17 +32,15 @@ nextcloud:
   mariadb:
     enabled: true
     auth:
-      username: <path:kv/data/k3s/argocd/nextcloud#mysql_username>
-      password: <path:kv/data/k3s/argocd/nextcloud#mysql_password>
+      username: mysql_username
+      password: mysql_password
     architecture: standalone
     primary:
       persistence:
         enabled: true
 
   redis:
-    enabled: true
-    auth:
-      password: <path:kv/data/k3s/argocd/nextcloud#redis_password>
+    enabled: false
 
   cronjob:
     enabled: true
