@@ -10,12 +10,18 @@ argo-cd:
     configEnabled: true
     config:
       sshConfigs: |
-        Host gitea.ws.v3nc.org
-            KexAlgorithms ecdh-sha2-nistp521
-            PubkeyAcceptedKeyTypes +ssh-rsa
         Host gitea.os.v3nc.org
             KexAlgorithms ecdh-sha2-nistp521
-            PubkeyAcceptedKeyTypes +ssh-rsa
+            PubkeyAcceptedAlgorithms +ssh-rsa
+        Host gitea.ws.v3nc.org
+            KexAlgorithms ecdh-sha2-nistp521
+            PubkeyAcceptedAlgorithms +ssh-rsa
+        Host gitea.os.sh4ke.rocks
+            KexAlgorithms ecdh-sha2-nistp521
+            PubkeyAcceptedAlgorithms +ssh-rsa
+        Host gitea.ws.sh4ke.rocks
+            KexAlgorithms ecdh-sha2-nistp521
+            PubkeyAcceptedAlgorithms +ssh-rsa
       configManagementPlugins: |
         - name: kustomized-helm
           init:
