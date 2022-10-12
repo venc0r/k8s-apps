@@ -1,0 +1,24 @@
+nextcloud:
+  ingress:
+    tls:
+      - secretName: nextcloud-ws-v3nc-org-tls
+        hosts:
+          - nextcloud.ws.v3nc.org
+  nextcloud:
+    host: nextcloud.ws.v3nc.org
+
+  mariadb:
+    primary:
+      persistence:
+        storageClass: csi-cinder-sc-delete-all-zones
+
+  redis:
+    enabled: true
+    global:
+      storageClass: nfs-csi
+
+  persistence:
+    storageClass: nfs-csi
+
+    nextcloudData:
+      storageClass: nfs-csi
