@@ -1,0 +1,40 @@
+---
+drone:
+  persistentVolume:
+    storageClass: csi
+  env:
+    DRONE_SERVER_HOST: drone.os.v3nc.org
+    DRONE_SERVER_PROTO: https
+
+    DRONE_RPC_SECRET: <path:secret/data/k3s/drone/drone#rpc_secret>
+
+    DRONE_DATABASE_DRIVER: postgres
+    DRONE_DATABASE_DATASOURCE: postgres://drone:<path:secret/data/k3s/drone/postgres#password>@drone-postgres:5432/drone?sslmode=disable
+    DRONE_DATABASE_SECRET: <path:secret/data/k3s/drone/postgres#secret>
+
+    DRONE_GIT_ALWAYS_AUTH: true
+
+    DRONE_GITEA_CLIENT_ID: <path:secret/data/k3s/drone/gitea#client_id>
+    DRONE_GITEA_CLIENT_SECRET: <path:secret/data/k3s/drone/gitea#secret>
+    DRONE_GITEA_SERVER: https://gitea.os.v3nc.org
+
+postgres:
+  auth:
+    postgresPassword: <path:secret/data/k3s/drone/postgres#postgres-password>
+    username: drone
+    password: <path:secret/data/k3s/drone/postgres#password>
+    replicationPassword: <path:secret/data/k3s/drone/postgres#replication-password>
+  primary:
+    persistence:
+      storageClass: csi
+  startupProbe:
+    enabled: true
+  architecture: replication
+  readReplicas:
+    persistence:
+      storageClass: csi
+  serviceAccount:
+    create: true
+    name: drone
+  rbac:
+    create: true
