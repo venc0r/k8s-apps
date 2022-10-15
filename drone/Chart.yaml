@@ -26,6 +26,6 @@ dependencies:
 - name: drone
   version: 0.6.1
   repository: https://charts.drone.io
-- name: postgres
+- name: postgresql
   version: 11.9.8
   repository: https://charts.bitnami.com/bitnami
