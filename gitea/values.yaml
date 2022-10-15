@@ -39,6 +39,9 @@ gitea:
       RUN_MODE: prod
       database:
         PASSWD: <path:secret/data/k3s/gitea/pgsql#postgres-password>
+        LOG_SQL: false
+      log:
+        LEVEL: Error
       picture:
         DISABLE_GRAVATAR: true
       security:
