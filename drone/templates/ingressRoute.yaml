@@ -38,14 +38,6 @@ spec:
 
 ---
 apiVersion: traefik.containo.us/v1alpha1
-kind: ServersTransport
-metadata:
-  name: drone-tls-backend
-spec:
-  serverName: {{ .Values.drone.env.DRONE_SERVER_HOST }}
-
----
-apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: drone-http
@@ -57,9 +49,8 @@ spec:
       match: 'Host(`{{ .Values.drone.env.DRONE_SERVER_HOST }}`)'
       priority: 10
       services:
-        - name: drone-http
-          port: 3000
-          scheme: https
+        - name: drone
+          port: 8080
       middlewares:
         - name: http-to-https
 
@@ -76,10 +67,8 @@ spec:
       match: 'Host(`{{ .Values.drone.env.DRONE_SERVER_HOST }}`)'
       priority: 10
       services:
-        - name: drone-http
-          port: 3000
-          serversTransport: drone-tls-backend
-          scheme: https
+        - name: drone
+          port: 8080
       middlewares:
         - name: security
   tls:
