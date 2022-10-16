@@ -6,6 +6,7 @@ drone-runner-kube:
   env:
     DRONE_RPC_SECRET: <path:secret/data/k3s/drone/drone#rpc_secret>
     DRONE_NAMESPACE_DEFAULT: drone
+    DRONE_RPC_HOST: drone:8080
 
 drone:
   persistentVolume:
