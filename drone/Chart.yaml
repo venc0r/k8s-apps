@@ -26,6 +26,9 @@ dependencies:
 - name: drone
   version: 0.6.1
   repository: https://charts.drone.io
+- name: drone-runner-kube
+  version: 0.1.10
+  repository: https://charts.drone.io
 - name: postgresql
   version: 11.9.8
   repository: https://charts.bitnami.com/bitnami

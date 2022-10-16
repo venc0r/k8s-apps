@@ -1,4 +1,12 @@
 ---
+drone-runner-kube:
+  rbac:
+    buildNamespaces:
+      - drone
+  env:
+    DRONE_RPC_SECRET: <path:secret/data/k3s/drone/drone#rpc_secret>
+    DRONE_NAMESPACE_DEFAULT: drone
+
 drone:
   persistentVolume:
     storageClass: csi
