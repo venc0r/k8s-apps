@@ -1,0 +1,37 @@
+kube-prometheus-stack:
+  alertmanager:
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt"
+    alertmanagerSpec:
+      storage:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: csi
+            accessModes: ["ReadWriteOnce"]
+            resources:
+              requests:
+                storage: 2Gi
+
+  grafana:
+    adminPassword: <path:secrets/data/k3s/kube-prometheus#grafanaAdminPassword>
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt"
+
+  prometheus:
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt"
+    prometheusSpec:
+      storage:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: csi
+            accessModes: ["ReadWriteOnce"]
+            resources:
+              requests:
+                storage: 2Gi

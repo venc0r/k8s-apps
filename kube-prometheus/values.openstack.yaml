@@ -1,0 +1,33 @@
+kube-prometheus-stack:
+  alertmanager:
+    ingress:
+      hosts:
+        - alertmanager.os.v3nc.org
+      paths:
+        - /
+      tls:
+        - secretName: alertmanager-os-v3nc-org-tls
+          hosts:
+          - alertmanager.os.v3nc.org
+
+  grafana:
+    ingress:
+      hosts:
+        - grafana.os.v3nc.org
+      paths:
+        - /
+      tls:
+        - secretName: grafana-os-v3nc-org-tls
+          hosts:
+          - grafana.os.v3nc.org
+
+  prometheus:
+    ingress:
+      hosts:
+        - prometheus.os.v3nc.org
+      paths:
+        - /
+      tls:
+        - secretName: prometheus-os-v3nc-org-tls
+          hosts:
+          - prometheus.os.v3nc.org
