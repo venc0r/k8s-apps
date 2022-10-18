@@ -15,7 +15,7 @@ kube-prometheus-stack:
                 storage: 2Gi
 
   grafana:
-    adminPassword: <path:secrets/data/k3s/kube-prometheus#grafanaAdminPassword>
+    adminPassword: <path:secrets/data/k3s/kube-prometheus/grafana#password>
     ingress:
       enabled: true
       annotations:
