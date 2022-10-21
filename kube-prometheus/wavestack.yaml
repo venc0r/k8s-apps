@@ -9,4 +9,3 @@ global:
     prometheus:
       host: prometheus.ws.v3nc.org
       port: "9090"
-

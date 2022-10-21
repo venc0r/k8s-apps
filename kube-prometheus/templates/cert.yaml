@@ -3,10 +3,10 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: gitea-https-cert
+  name: {{ (split "." .host)._0 }}-https-cert
 spec:
   commonName: {{ .host }}
-  secretName: gitea-https-cert
+  secretName: {{ (split "." .host)._0 }}-https-cert
   dnsNames:
     - {{ .host }}
   issuerRef:
