@@ -52,7 +52,6 @@ spec:
       services:
         - name: {{ (split "." .host)._0 }}-http
           port: {{ .port }}
-          scheme: https
       middlewares:
         - name: http-to-https
 
@@ -71,8 +70,6 @@ spec:
       services:
         - name: {{ (split "." .host)._0 }}-http
           port: {{ .port }}
-          serversTransport: {{ (split "." .host)._0 }}-tls-backend
-          scheme: https
       middlewares:
         - name: security
   tls:
