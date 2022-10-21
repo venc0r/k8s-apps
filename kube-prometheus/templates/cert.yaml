@@ -1,0 +1,15 @@
+{{ range $key, _ := .Values.global.domains }}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: gitea-https-cert
+spec:
+  commonName: {{ $key }}
+  secretName: gitea-https-cert
+  dnsNames:
+    - {{ $key }}
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+{{ end }}

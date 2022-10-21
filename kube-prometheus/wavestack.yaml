@@ -1,33 +1,5 @@
-kube-prometheus-stack:
-  alertmanager:
-    ingress:
-      hosts:
-        - alertmanager.ws.v3nc.org
-      paths:
-        - /
-      tls:
-        - secretName: alertmanager-ws-v3nc-org-tls
-          hosts:
-          - alertmanager.ws.v3nc.org
-
-  grafana:
-    ingress:
-      hosts:
-        - grafana.ws.v3nc.org
-      paths:
-        - /
-      tls:
-        - secretName: grafana-ws-v3nc-org-tls
-          hosts:
-          - grafana.ws.v3nc.org
-
-  prometheus:
-    ingress:
-      hosts:
-        - prometheus.ws.v3nc.org
-      paths:
-        - /
-      tls:
-        - secretName: prometheus-ws-v3nc-org-tls
-          hosts:
-          - prometheus.ws.v3nc.org
+global:
+  domains:
+    - alertmanager.ws.v3nc.org: "9093"
+    - grafana.ws.v3nc.org: "80"
+    - prometheus.ws.v3nc.org: "9090"
