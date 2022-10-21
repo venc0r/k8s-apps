@@ -1,5 +1,11 @@
 global:
   domains:
-    - alertmanager.os.v3nc.org: "9093"
-    - grafana.os.v3nc.org: "80"
-    - prometheus.os.v3nc.org: "9090"
+    alertmanager:
+      host: alertmanager.os.v3nc.org
+      port: "9093"
+    grafana:
+      host: grafana.os.v3nc.org
+      port: "80"
+    prometheus:
+      host: prometheus.os.v3nc.org
+      port: "9090"
