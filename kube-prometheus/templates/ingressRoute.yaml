@@ -50,7 +50,7 @@ spec:
       match: 'Host(`{{ .host }}`)'
       priority: 10
       services:
-        - name: {{ (split "." .host)._0 }}-http
+        - name: kube-prometheus-{{ .service }}
           port: {{ .port }}
       middlewares:
         - name: http-to-https
@@ -68,7 +68,7 @@ spec:
       match: 'Host(`{{ .host }}`)'
       priority: 10
       services:
-        - name: {{ (split "." .host)._0 }}-http
+        - name: kube-prometheus-{{ .service }}
           port: {{ .port }}
       middlewares:
         - name: security
