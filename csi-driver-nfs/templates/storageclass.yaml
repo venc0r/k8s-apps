@@ -1,17 +1,14 @@
+{{ range .Values.global.storageClasses }}
+---
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: nfs-csi
+  name: {{ .name }}
 provisioner: nfs.csi.k8s.io
 parameters:
-  server: 192.168.88.50
-  share: /opt/k3s-csi
-  # csi.storage.k8s.io/provisioner-secret is only needed for providing mountOptions in DeleteVolume
-  # csi.storage.k8s.io/provisioner-secret-name: "mount-options"
-  # csi.storage.k8s.io/provisioner-secret-namespace: "default"
+  server: {{ $ .Values.global.serverIp }}
+  share: {{ .path }}
 reclaimPolicy: Delete
 volumeBindingMode: Immediate
 allowVolumeExpansion: true
-# mountOptions:
-#   - nconnect=8  # only supported on linux kernel version >= 5.3
-#   - nfsvers=4.1
+{{ end }}
