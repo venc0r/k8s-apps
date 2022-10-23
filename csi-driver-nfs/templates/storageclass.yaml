@@ -6,7 +6,7 @@ metadata:
   name: {{ .name }}
 provisioner: nfs.csi.k8s.io
 parameters:
-  server: {{ $ .Values.global.serverIp }}
+  server: {{ $.Values.global.serverIp }}
   share: {{ .path }}
 reclaimPolicy: Delete
 volumeBindingMode: Immediate
