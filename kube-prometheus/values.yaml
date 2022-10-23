@@ -9,9 +9,9 @@ kube-prometheus-stack:
             resources:
               requests:
                 storage: 2Gi
-      alertmanagerConfigNamespaceSelector:
-        matchLabels:
-          alertmanagerconfig: enabled
+      # alertmanagerConfigNamespaceSelector:
+      #   matchLabels:
+      #     alertmanagerconfig: enabled
 
   grafana:
     defaultDashboardsTimezone: "Europe/Berlin"
@@ -27,10 +27,10 @@ kube-prometheus-stack:
             resources:
               requests:
                 storage: 2Gi
-      serviceMonitorNamespaceSelector:
-        matchLabels:
-          alertmanagerconfig: enabled
-      podMonitorNamespaceSelector:
-        matchLabels:
-          alertmanagerconfig: enabled
+      # serviceMonitorNamespaceSelector:
+      #   matchLabels:
+      #     alertmanagerconfig: enabled
+      # podMonitorNamespaceSelector:
+      #   matchLabels:
+      #     alertmanagerconfig: enabled
       serviceMonitorSelectorNilUsesHelmValues: false
