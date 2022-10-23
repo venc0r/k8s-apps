@@ -38,6 +38,14 @@ spec:
 
 ---
 apiVersion: traefik.containo.us/v1alpha1
+kind: ServersTransport
+metadata:
+  name: gitea-tls-backend
+spec:
+  serverName: {{ .Values.gitea.gitea.config.server.DOMAIN }}
+
+---
+apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: gitea-http
@@ -51,6 +59,7 @@ spec:
       services:
         - name: gitea-http
           port: 3000
+          scheme: https
       middlewares:
         - name: http-to-https
 
@@ -69,9 +78,25 @@ spec:
       services:
         - name: gitea-http
           port: 3000
+          serversTransport: gitea-tls-backend
+          scheme: https
       middlewares:
         - name: security
   tls:
     secretName: gitea-https-cert
     options:
       name: tls-options
+
+# ---
+# apiVersion: traefik.containo.us/v1alpha1
+# kind: IngressRouteTCP
+# metadata:
+#   name: gitea-ssh
+# spec:
+#   entryPoints:
+#     - ssh
+#   routes:
+#     - match: HostSNI(`*`)
+#       services:
+#         - name: gitea-ssh
+#           port: 22
