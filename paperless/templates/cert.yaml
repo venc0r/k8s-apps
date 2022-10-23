@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: paperless-https-cert
+spec:
+  commonName: {{ .Values.paperless.host }}
+  secretName: paperless-https-cert
+  dnsNames:
+    - {{ .Values.paperless.host }}
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer

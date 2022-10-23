@@ -1,0 +1,17 @@
+{{ if .Values.paperless.persistence.backup.enabled }}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  finalizers:
+  - kubernetes.io/pvc-protection
+  name: paperless-ng-data-backup
+  namespace: paperless-ng
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.paperless.persistence.backup.size }}
+  storageClassName: {{ .Values.paperless.persistence.backup.storageClass }}
+{{ end }}

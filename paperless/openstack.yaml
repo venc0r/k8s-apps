@@ -1,7 +1,7 @@
 paperless:
   env:
-    PAPERLESS_URL: https://paperless.ws.v3nc.org
-  host: paperless.ws.v3nc.org
+    PAPERLESS_URL: https://paperless.os.v3nc.org
+  host: paperless.os.v3nc.org
 
   persistence:
     backup:
