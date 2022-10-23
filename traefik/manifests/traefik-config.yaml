@@ -22,7 +22,7 @@ spec:
       web:
         redirectTo: websecure
     metrics:
-      port: 9982
+      hostPort: 9982
 # See https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml for more examples
 # The deployment.kind=DaemonSet and hostNetwork=true is to get real ip and x-forwarded for, and can be omitted if this is
 # not needed.
