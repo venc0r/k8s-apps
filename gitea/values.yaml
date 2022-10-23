@@ -18,7 +18,7 @@ backup:
       operator: In
       values:
         - gitea-0
-  image: gitea/gitea:1.16.8-rootless
+  image: gitea/gitea:1.17.3-rootless
   secret:
     name: iscsi-chap-secret
     data:
@@ -33,7 +33,11 @@ gitea:
   gitea:
     admin:
       existingSecret: gitea-admin-secret
-      email: joerg.markert@gmail.com
+      email: venc0r@live.com
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
     config:
       APP_NAME: "Gitea: Kaffee! und zwar schwarzer"
       RUN_MODE: prod
