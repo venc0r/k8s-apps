@@ -21,4 +21,3 @@ gitea:
     config:
       server:
         DOMAIN: gitea.ws.v3nc.org
-        PROTOCOL: https
