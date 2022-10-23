@@ -1,4 +1,3 @@
-{{ if .Values.paperless.persistence.backup.enabled }}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -12,6 +11,5 @@ spec:
   - ReadWriteOnce
   resources:
     requests:
-      storage: {{ .Values.paperless.persistence.backup.size }}
-  storageClassName: {{ .Values.paperless.persistence.backup.storageClass }}
-{{ end }}
+      storage: {{ .Values.paperless.persistence.data.size }}
+  storageClassName: {{ .Values.paperless.persistence.data.storageClass }}
