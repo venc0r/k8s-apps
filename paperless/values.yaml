@@ -66,7 +66,7 @@ paperless:
       database: paperless
       username: paperless
       password: <path:secret/data/k3s/paperless/postgres#password>
-      postgresPassword: <path:secret/data/k3s/paperless/postgres#postgresPassword>
+      postgresPassword: <path:secret/data/k3s/paperless/postgres#postgres-password>
     primary:
       # pgHbaConfiguration: |
       #   host    all      paperless    127.0.0.1/32     trust
@@ -89,7 +89,7 @@ backup:
     - name: COMPOSE_PROJECT_NAME
       value: paperless
     - name: PAPERLESS_ADMIN_MAIL
-      value: michael.wittig@posteo.de
+      value: joerg.markert@gmail.com
     - name: PAPERLESS_CONSUMER_RECURSIVE
       value: "1"
     - name: PAPERLESS_DBHOST
@@ -112,8 +112,6 @@ backup:
       value: http://paperless-ng-gotenberg:3000
     - name: PAPERLESS_TIME_ZONE
       value: Europe/Berlin
-    - name: PAPERLESS_URL
-      value: https://paperless.ws.sh4ke.rocks
   envFrom:
     - secretRef:
         name: paperless-ng
