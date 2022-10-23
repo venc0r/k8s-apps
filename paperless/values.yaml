@@ -114,23 +114,23 @@ backup:
       value: Europe/Berlin
   envFrom:
     - secretRef:
-        name: paperless-ng
+        name: paperless
   volumes:
     - name: consume
       persistentVolumeClaim:
-        claimName: paperless-ng-consume
+        claimName: paperless-consume
     - name: data
       persistentVolumeClaim:
-        claimName: paperless-ng-data
+        claimName: paperless-data
     - name: data-backup
       persistentVolumeClaim:
         claimName: paperless-ng-data-backup
     - name: export
       persistentVolumeClaim:
-        claimName: paperless-ng-export
+        claimName: paperless-export
     - name: media
       persistentVolumeClaim:
-        claimName: paperless-ng-media
+        claimName: paperless-media
   volumeMounts:
     - mountPath: /usr/src/paperless/data-backup
       name: data-backup
