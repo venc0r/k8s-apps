@@ -1,0 +1,4 @@
+paperless:
+  env:
+    PAPERLESS_URL: https://paperless.os.v3nc.org
+
