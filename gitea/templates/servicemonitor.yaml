@@ -2,19 +2,15 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: {{ include "gitea.gitea.fullname" . }}
-  labels:
-    {{- include "gitea.gitea.labels" . | nindent 4 }}
-    {{- if .Values.gitea.gitea.metrics.serviceMonitor.additionalLabels }}
-    {{- toYaml .Values.gitea.gitea.metrics.serviceMonitor.additionalLabels | nindent 4 }}
-    {{- end }}
+  name: gitea
 spec:
   selector:
     matchLabels:
-      {{- include "gitea.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/instance: gitea
+      app.kubernetes.io/name: gitea
   endpoints:
   - port: http
     scheme: https
-      tlsConfig:
-        serverName: {{ .Values.gitea.gitea.config.server.DOMAIN }}
+    tlsConfig:
+      serverName: {{ .Values.gitea.gitea.config.server.DOMAIN }}
 {{- end -}}
