@@ -5,16 +5,8 @@ backup:
       persistentVolumeClaim:
         claimName: data-gitea-0
     - name: gitea-backup
-      iscsi:
-        targetPortal: 192.168.88.50
-        iqn: iqn.2003-01.org.linux-iscsi.archlinux.x8664:sn.43fb4d620c83
-        lun: 0
-        fsType: ext4
-        readOnly: false
-        chapAuthDiscovery: false
-        chapAuthSession: true
-        secretRef:
-          name: iscsi-chap-secret
+      persistentVolumeClaim:
+        claimName: data-gitea-0-backup
 
 gitea:
   gitea:
