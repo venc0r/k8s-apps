@@ -2,11 +2,11 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: {{ include "gitea.fullname" . }}
+  name: {{ include "gitea.gitea.fullname" . }}
   labels:
-    {{- include "gitea.labels" . | nindent 4 }}
-    {{- if .Values.gitea.metrics.serviceMonitor.additionalLabels }}
-    {{- toYaml .Values.gitea.metrics.serviceMonitor.additionalLabels | nindent 4 }}
+    {{- include "gitea.gitea.labels" . | nindent 4 }}
+    {{- if .Values.gitea.gitea.metrics.serviceMonitor.additionalLabels }}
+    {{- toYaml .Values.gitea.gitea.metrics.serviceMonitor.additionalLabels | nindent 4 }}
     {{- end }}
 spec:
   selector:
