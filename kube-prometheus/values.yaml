@@ -34,3 +34,4 @@ kube-prometheus-stack:
       #   matchLabels:
       #     alertmanagerconfig: enabled
       serviceMonitorSelectorNilUsesHelmValues: false
+      podMonitorSelectorNilUsesHelmValues: false
