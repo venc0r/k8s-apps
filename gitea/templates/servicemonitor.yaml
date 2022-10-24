@@ -1,4 +1,4 @@
-{{- if .Values.gitea.metrics.serviceMonitorHttps.enabled -}}
+{{- if .Values.gitea.gitea.metrics.serviceMonitorHttps.enabled -}}
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
