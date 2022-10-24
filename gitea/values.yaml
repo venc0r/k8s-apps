@@ -36,7 +36,7 @@ gitea:
       email: venc0r@live.com
     metrics:
       enabled: true
-      serviceMonitor:
+      serviceMonitorHttps:
         enabled: true
     config:
       APP_NAME: "Gitea: Kaffee! und zwar schwarzer"
