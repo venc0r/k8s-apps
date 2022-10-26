@@ -34,4 +34,4 @@ dependencies:
   repository: https://apache.jfrog.io/artifactory/tika
 - name: backup
   version: 0.3.0
-  repository: https://gitea.os.v3nc.org/api/packages/venc0r/helm
+  repository: https://gitea.ws.v3nc.org/api/packages/venc0r/helm
