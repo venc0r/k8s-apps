@@ -1,27 +1,2 @@
 paperless:
-  env:
-    PAPERLESS_URL: https://paperless.os.v3nc.org
-  host: paperless.os.v3nc.org
-
-  persistence:
-    data:
-      enabled: true
-      storageClass: csi-nfs
-      size: 1Gi
-    media:
-      enabled: true
-      storageClass: csi-nfs
-      size: 8Gi
-    consume:
-      enabled: true
-      storageClass: csi-nfs
-      size: 1Gi
-    export:
-      enabled: true
-      storageClass: csi-nfs
-      size: 1Gi
-
-  postgresql:
-    primary:
-      persistence:
-        storageClass: csi-nfs-ssd
+  domain: paperless.os.v3nc.org

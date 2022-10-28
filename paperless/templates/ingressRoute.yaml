@@ -38,6 +38,14 @@ spec:
 
 ---
 apiVersion: traefik.containo.us/v1alpha1
+kind: ServersTransport
+metadata:
+  name: paperless-tls-backend
+spec:
+  serverName: {{ .Values.paperless.domain }}
+
+---
+apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: paperless-http
@@ -46,11 +54,11 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: 'Host(`{{ .Values.paperless.host }}`)'
+      match: 'Host(`{{ .Values.paperless.domain }}`)'
       priority: 10
       services:
         - name: paperless
-          port: 8000
+          port: 80
       middlewares:
         - name: http-to-https
 
@@ -64,15 +72,16 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: 'Host(`{{ .Values.paperless.host }}`)'
+      match: 'Host(`{{ .Values.paperless.domain }}`)'
       priority: 10
       services:
         - name: paperless
-          port: 8000
+          port: 80
+          scheme: https
+          serversTransport: paperless-tls-backend
       middlewares:
         - name: security
   tls:
     secretName: paperless-https-cert
     options:
       name: tls-options
-

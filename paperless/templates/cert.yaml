@@ -3,10 +3,10 @@ kind: Certificate
 metadata:
   name: paperless-https-cert
 spec:
-  commonName: {{ .Values.paperless.host }}
+  commonName: {{ .Values.paperless.domain }}
   secretName: paperless-https-cert
   dnsNames:
-    - {{ .Values.paperless.host }}
+    - {{ .Values.paperless.domain }}
   issuerRef:
     name: letsencrypt
     kind: ClusterIssuer

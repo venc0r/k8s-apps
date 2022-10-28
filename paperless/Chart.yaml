@@ -15,23 +15,9 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 9.1.3
+version: 0.0.1
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
-appVersion: "1.9.2"
-
-dependencies:
-- name: paperless
-  version: 9.1.3
-  repository: https://k8s-at-home.com/charts/
-- name: gotenberg
-  version: 5.0.0
-  repository: https://kurt108.github.io/helm-charts
-- name: tika
-  version: 2.2.1
-  repository: https://apache.jfrog.io/artifactory/tika
-- name: backup
-  version: 0.4.0
-  repository: https://gitea.os.v3nc.org/api/packages/venc0r/helm
+appVersion: "0.0.1"
