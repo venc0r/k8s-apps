@@ -42,6 +42,7 @@ kind: ServersTransport
 metadata:
   name: paperless-tls-backend
 spec:
+  insecureSkipVerify: true
   serverName: {{ .Values.paperless.domain }}
 
 ---
