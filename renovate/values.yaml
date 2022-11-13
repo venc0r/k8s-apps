@@ -4,4 +4,5 @@ renovate:
     cronjob: 'batch/v1'
   redis:
     enabled: true
-    global.storageClass: csi
+    global:
+      storageClass: csi

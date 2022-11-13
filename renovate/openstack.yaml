@@ -7,7 +7,7 @@ renovate:
         "endpoint": "https://gitea.os.v3nc.org/api/v1",
         "token": "<path:secret/data/k3s/renovate/gitea#token>",
         "autodiscover": "true",
-        "renovate_git_author": "Renovate Bot <bot@renovateapp.com>",
+        "gitAuthor": "Renovate Bot <bot@renovateapp.com>",
         "printConfig": true,
         "redisUrl": "redis"
       }
