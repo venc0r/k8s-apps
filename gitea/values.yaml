@@ -19,11 +19,6 @@ backup:
       values:
         - gitea-0
   image: gitea/gitea:1.17.3-rootless
-  secret:
-    name: iscsi-chap-secret
-    data:
-      node.session.auth.username: <path:secret/data/k3s/gitea/iscsi#username>
-      node.session.auth.password: <path:secret/data/k3s/gitea/iscsi#password>
 
 gitea:
   persistence:
