@@ -12,16 +12,6 @@ spec:
     metadata:
       name: gitea-restore
     spec:
-      affinity:
-        podAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            - labelSelector:
-                matchExpressions:
-                  - key: statefulset.kubernetes.io/pod-name
-                    operator: In
-                    values:
-                      - gitea-0
-              topologyKey: kubernetes.io/hostname
       initContainers:
         - command:
             - sh
