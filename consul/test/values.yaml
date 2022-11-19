@@ -1,0 +1,7 @@
+consul:
+  server:
+    storage: 2Gi
+    storageClass: csi
+  ui:
+    enabled: false
+

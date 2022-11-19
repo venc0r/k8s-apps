@@ -1,0 +1,39 @@
+---
+openstack-cinder-csi:
+  secret:
+    enabled: true
+    create: true
+    name: cinder-csi-cloud-config
+    data:
+      # Wird von der Pipeline gepatched
+      cloud-config: |-
+        [Global]
+        auth-url="https://de-nbg6-1.noris.cloud:5000/v3"
+        username="jmarkert"
+        user-domain-name="noris.de"
+        password=""
+        tenant-id=4dddce866d744599b947f3c18fd06be3
+        tenant-name=jmarkert
+        tenant-domain-name=noris.de
+        region=de-nbg6-1
+  # Log verbosity level.
+  # See https://github.com/kubernetes/community/blob/master/contributors/devel/sig-instrumentation/logging.md
+  # for description of individual verbosity levels.
+  logVerbosityLevel: 4
+  storageClass:
+    enabled: true
+    delete:
+      isDefault: false
+      allowVolumeExpansion: true
+    retain:
+      isDefault: false
+      allowVolumeExpansion: true
+    custom: |-
+      ---
+      apiVersion: storage.k8s.io/v1
+      kind: StorageClass
+      metadata:
+        name: csi
+      provisioner: cinder.csi.openstack.org
+      volumeBindingMode: WaitForFirstConsumer
+      allowVolumeExpansion: true

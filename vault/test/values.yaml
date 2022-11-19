@@ -1,0 +1,34 @@
+vault:
+  global:
+    tlsDisable: false
+  server:
+    auditStorage:
+      enabled: true
+      storageClass: csi
+      size: 2Gi
+    domain: vault.ws.v3nc.org
+    extraVolumes:
+    - type: secret
+      name: vault-https-cert
+    ha:
+      enabled: true
+      config: |
+        ui = false
+
+        listener "tcp" {
+          tls_disable = "false"
+          address = "[::]:8200"
+          cluster_address = "[::]:8201"
+          tls_cert_file = "/vault/userconfig/vault-https-cert/tls.crt"
+          tls_key_file  = "/vault/userconfig/vault-https-cert/tls.key"
+        }
+        storage "consul" {
+          path = "vault"
+          address = "HOST_IP:8500"
+        }
+
+        service_registration "kubernetes" {}
+    dataStorage:
+      enabled: true
+      size: 2Gi
+      storageClass: csi

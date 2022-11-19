@@ -1,0 +1,53 @@
+---
+global:
+  domains:
+    alertmanager:
+      host: alertmanager.os.v3nc.org
+      service: kube-prome-alertmanager
+      port: "9093"
+    grafana:
+      host: grafana.os.v3nc.org
+      service: grafana
+      port: "80"
+    prometheus:
+      host: prometheus.os.v3nc.org
+      service: kube-prome-prometheus
+      port: "9090"
+
+kube-prometheus-stack:
+  alertmanager:
+    alertmanagerSpec:
+      storage:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: csi
+            accessModes: ["ReadWriteOnce"]
+            resources:
+              requests:
+                storage: 2Gi
+      # alertmanagerConfigNamespaceSelector:
+      #   matchLabels:
+      #     alertmanagerconfig: enabled
+
+  grafana:
+    defaultDashboardsTimezone: "Europe/Berlin"
+    adminPassword: <path:secret/data/k3s/kube-prometheus/grafana#password>
+
+  prometheus:
+    prometheusSpec:
+      storage:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: csi
+            accessModes: ["ReadWriteOnce"]
+            resources:
+              requests:
+                storage: 2Gi
+      # serviceMonitorNamespaceSelector:
+      #   matchLabels:
+      #     alertmanagerconfig: enabled
+      # podMonitorNamespaceSelector:
+      #   matchLabels:
+      #     alertmanagerconfig: enabled
+      serviceMonitorSelectorNilUsesHelmValues: false
+      podMonitorSelectorNilUsesHelmValues: false

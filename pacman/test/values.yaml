@@ -1,0 +1,6 @@
+pacman:
+  domain: pacman.ws.v3nc.org
+  service:
+    type: ClusterIP
+
+  ingress: {}

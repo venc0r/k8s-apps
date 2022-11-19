@@ -1,0 +1,15 @@
+{{ range .Values.global.domains }}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ (split "." .host)._0 }}-https-cert
+spec:
+  commonName: {{ .host }}
+  secretName: {{ (split "." .host)._0 }}-https-cert
+  dnsNames:
+    - {{ .host }}
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+{{ end }}

@@ -1,0 +1,7 @@
+global:
+  serverIp: "192.168.88.50"
+  storageClasses:
+    - name: csi-nfs
+      path: /opt/share/btrfs/k3s-pvc
+    - name: csi-nfs-ssd
+      path: /opt/k3s-pvc

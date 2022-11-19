@@ -1,8 +1,0 @@
----
-renovate:
-  apiVersionOverrides:
-    cronjob: 'batch/v1'
-  redis:
-    enabled: true
-    global:
-      storageClass: csi

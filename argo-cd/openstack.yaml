@@ -1,3 +1,0 @@
-global:
-  domain: "argocd.os.v3nc.org"
-  vault_url: "https://vault.os.v3nc.org"
