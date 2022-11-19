@@ -1,4 +1,0 @@
----
-drone:
-  env:
-    DRONE_SERVER_HOST: drone.os.v3nc.org

@@ -1,0 +1,4 @@
+paperless:
+  domain: paperless.os.v3nc.org
+  ip: 192.168.88.50
+  port: 443
