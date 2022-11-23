@@ -1,6 +1,6 @@
 consul:
   server:
-    storage: 2Gi
+    storage: 3Gi
     storageClass: csi
   ui:
     enabled: false
