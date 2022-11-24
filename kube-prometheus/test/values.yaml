@@ -36,7 +36,7 @@ kube-prometheus-stack:
           telegram_configs:
             - bot_token: <path:secret/data/k3s/kube-prometheus/alertmanager#telegramApiToken>
               api_url: "https://api.telegram.org"
-              chat_id: 816791813
+              chat_id: 11447530
               parse_mode: "HTML"
 
     alertmanagerSpec:
