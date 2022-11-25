@@ -16,6 +16,29 @@ global:
 
 kube-prometheus-stack:
   alertmanager:
+    config:
+      route:
+        group_by: ['namespace']
+        group_wait: 30s
+        group_interval: 5m
+        repeat_interval: 12h
+        receiver: 'telegram'
+        routes:
+          - receiver: 'telegram'
+            matchers:
+              - alertname !~ "InfoInhibitor|Watchdog"
+          - receiver: 'null'
+            matchers:
+              - alertname =~ "InfoInhibitor|Watchdog"
+      receivers:
+        - name: 'null'
+        - name: telegram
+          telegram_configs:
+            - bot_token: <path:secret/data/k3s/kube-prometheus/alertmanager#telegramApiToken>
+              api_url: "https://api.telegram.org"
+              chat_id: -816791813
+              parse_mode: "HTML"
+
     alertmanagerSpec:
       storage:
         volumeClaimTemplate:
@@ -25,9 +48,6 @@ kube-prometheus-stack:
             resources:
               requests:
                 storage: 2Gi
-      # alertmanagerConfigNamespaceSelector:
-      #   matchLabels:
-      #     alertmanagerconfig: enabled
 
   grafana:
     defaultDashboardsTimezone: "Europe/Berlin"
@@ -43,11 +63,5 @@ kube-prometheus-stack:
             resources:
               requests:
                 storage: 2Gi
-      # serviceMonitorNamespaceSelector:
-      #   matchLabels:
-      #     alertmanagerconfig: enabled
-      # podMonitorNamespaceSelector:
-      #   matchLabels:
-      #     alertmanagerconfig: enabled
       serviceMonitorSelectorNilUsesHelmValues: false
       podMonitorSelectorNilUsesHelmValues: false
