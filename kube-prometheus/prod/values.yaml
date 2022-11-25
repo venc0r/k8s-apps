@@ -65,3 +65,10 @@ kube-prometheus-stack:
                 storage: 2Gi
       serviceMonitorSelectorNilUsesHelmValues: false
       podMonitorSelectorNilUsesHelmValues: false
+
+  kubeControllerManager:
+    enabled: false
+  kubeProxy:
+    enabled: false
+  kubeScheduler:
+    enabled: false
