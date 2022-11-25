@@ -28,4 +28,4 @@ dependencies:
   repository: https://dl.gitea.io/charts/
 - name: backup
   version: 0.4.0
-  repository: https://raw.githubusercontent.com/venc0r/k8s-apps/gh-pages/
+  repository: https://raw.githubusercontent.com/venc0r/k8s-apps/main/.cr-index/
