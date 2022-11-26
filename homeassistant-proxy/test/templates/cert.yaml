@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: homeassistant-https-cert
+spec:
+  commonName: {{ .Values.homeassistant.domain }}
+  secretName: homeassistant-https-cert
+  dnsNames:
+    - {{ .Values.homeassistant.domain }}
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer

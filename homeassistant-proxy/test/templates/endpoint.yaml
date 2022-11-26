@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: homeassistant
+subsets:
+- addresses:
+  - ip: {{ .Values.homeassistant.ip }}
+  ports:
+  - name: homeassistant
+    port: {{ .Values.homeassistant.port }}
+    protocol: TCP
