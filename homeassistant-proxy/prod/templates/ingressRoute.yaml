@@ -38,15 +38,6 @@ spec:
 
 ---
 apiVersion: traefik.containo.us/v1alpha1
-kind: ServersTransport
-metadata:
-  name: homeassistant-tls-backend
-spec:
-  insecureSkipVerify: true
-  serverName: {{ .Values.homeassistant.domain }}
-
----
-apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: homeassistant-http
@@ -78,8 +69,6 @@ spec:
       services:
         - name: homeassistant
           port: 80
-          scheme: https
-          serversTransport: homeassistant-tls-backend
       middlewares:
         - name: security
   tls:
