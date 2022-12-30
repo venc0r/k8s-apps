@@ -25,7 +25,7 @@ backup:
       operator: In
       values:
         - gitea-0
-  image: gitea/gitea:1.17.3-rootless
+  image: gitea/gitea:1.18.0-rootless
 
 gitea:
   persistence:
