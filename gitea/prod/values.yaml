@@ -39,7 +39,7 @@ gitea:
     metrics:
       enabled: true
       serviceMonitorHttps:
-        enabled: false
+        enabled: true
     config:
       APP_NAME: "Gitea: Kaffee! und zwar schwarzer"
       RUN_MODE: prod
