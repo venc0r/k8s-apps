@@ -69,6 +69,7 @@ spec:
       services:
         - name: homeassistant
           port: 80
+          scheme: https
       middlewares:
         - name: security
   tls:
