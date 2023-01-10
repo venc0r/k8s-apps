@@ -8,22 +8,30 @@ spec:
     deployment:
       kind: DaemonSet
     hostNetwork: true
-    rollingUpdate:
-      maxSurge: null
-      maxUnavailable: 2
-    dashboard:
-      enabled: true
+    updateStrategy:
+      type: RollingUpdate
+      rollingUpdate:
+        maxUnavailable: 1
+        maxSurge: 0
     logs:
-      level: INFO
+      general:
+        level: INFO
       access:
         enabled: true
     additionalArguments:
-      - "--entryPoints.web.proxyProtocol.trustedIPs=127.0.0.1/32,10.11.12.0/24"
-      - "--entryPoints.websecure.proxyProtocol.trustedIPs=127.0.0.1/32,10.11.12.0/24"
       - "--providers.kubernetesIngress.ingressClass=traefik-cert-manager"
     ports:
       web:
+        proxyProtocol:
+          trustedIPs:
+            - 127.0.0.1/32
+            - 10.20.30.0/24
         redirectTo: websecure
+      websecure:
+        proxyProtocol:
+          trustedIPs:
+            - 127.0.0.1/32
+            - 10.20.30.0/24
       metrics:
         port: 9982
         hostPort: 9982
